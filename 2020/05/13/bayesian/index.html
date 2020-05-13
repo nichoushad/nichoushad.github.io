@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>bayesian - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-13 17:10">
+                    2020年5月13日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    801 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    10
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="bayesian"><a href="#bayesian" class="headerlink" title="bayesian"></a>bayesian</h1><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><a href="https://github.com/nichoushad/bayesian" target="_blank" rel="noopener">github</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_two.html" target="_blank" rel="noopener">贝叶斯原理</a></p>
+<p><a href="https://github.com/Jack-Cherish/Machine-Learning" target="_blank" rel="noopener">机器学习实战</a></p>
+<p>贝叶斯处理垃圾邮件/可选择词袋、词集模式</p>
+<p><a href="[https://plg.uwaterloo.ca/~gvcormac/treccorpus06/](https://links.jianshu.com/go?to=https%3A%2F%2Fplg.uwaterloo.ca%2F~gvcormac%2Ftreccorpus06%2F)">数据集在此下载</a></p>
+<p>默认通过词集模型来进行表示。</p>
+<p>词集模式：输入邮件的分词与词汇表对照,出现的标为1</p>
+<p>词袋模式：输入邮件的分词与词汇表对照,出现的标为出现次数</p>
+<p>对应函数</p>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setOfWords2Vec</span><span class="hljs-params">(vocabList, inputSet)</span>:</span>
+    <span class="hljs-string">'''</span>
+<span class="hljs-string">    词集模型</span>
+<span class="hljs-string">    输入邮件的分词与词汇表对照,出现的标为1</span>
+<span class="hljs-string">    :param vocabList: 词汇表</span>
+<span class="hljs-string">    :param inputSet: 某个文档</span>
+<span class="hljs-string">    :return: returnVec: 文档向量，向量的每一元素为1或0</span>
+<span class="hljs-string">    '''</span>
+    returnVec = [<span class="hljs-number">0</span>] * len(vocabList)
+    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> inputSet:
+        returnVec[vocabList.index(word)] = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">else</span>:
+        print(<span class="hljs-string">'词: &#123;word&#125; 不在字典中'</span>.format(word=word))
+    <span class="hljs-keyword">return</span> returnVec</code></pre>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bagOfWords2VecMN</span><span class="hljs-params">(vocabList, inputSet)</span>:</span>
+    <span class="hljs-string">'''</span>
+<span class="hljs-string">    词袋模型</span>
+<span class="hljs-string">    输入邮件的分词与词汇表对照,出现的标为出现次数</span>
+<span class="hljs-string">    :param vocabList: 词汇表</span>
+<span class="hljs-string">    :param inputSet: 某个文档</span>
+<span class="hljs-string">    :return: returnVec: 文档向量</span>
+<span class="hljs-string">    '''</span>
+    returnVec = [<span class="hljs-number">0</span>] * len(vocabList)
+    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> inputSet:
+        <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> vocabList:
+            returnVec[vocabList.index(word)] += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> returnVec</code></pre>
+
+<h2 id="1-数据集处理"><a href="#1-数据集处理" class="headerlink" title="1.数据集处理"></a><strong>1.数据集处理</strong></h2><p>数据集中对data中的数据进行训练，而其训练参考结果在full中，full以例如<u>spam   path</u>的方式表示。</p>
+<p>在get_index()函数中读取full中文件，代码如下</p>
+<pre><code class="hljs python">index = pd.read_csv(<span class="hljs-string">'./email/full/index'</span>, sep=<span class="hljs-string">' '</span>, header=<span class="hljs-literal">None</span>, names=[<span class="hljs-string">'type'</span>, <span class="hljs-string">'path'</span>], skiprows=skiprows, nrows=nrows)</code></pre>
+
+<p>参数skiprows指跳过几行开始读取，nrows指从该行开始读取几行，sep指读取中的分隔符，index文件中没有列标，所以给了个type，path的列标。</p>
+<p>然后通过type和path组合，通过get_emailframe()函数获取相应path中的数据</p>
+<h2 id="2-处理数据"><a href="#2-处理数据" class="headerlink" title="2.处理数据"></a>2.处理数据</h2><p>1.通过jieba分词，以及对非中文单词的过滤，得到词语列表，这里并没有使用过滤停用词，采用了把其中只有一个字的分词给省略。</p>
+<p>2.创建字典，通过set()函数与并集来实现。</p>
+<p>3.训练数据，得到词集</p>
+<p>4.得到贝叶斯概率，假如邮件中有词集里没有的单词，就使用平滑处理</p>
+<h2 id="3-测试与结果分析"><a href="#3-测试与结果分析" class="headerlink" title="3.测试与结果分析"></a>3.测试与结果分析</h2><p><img src="file:///C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTencent%5CUsers%5C1227355064%5CTIM%5CWinTemp%5CRichOle%5C57~9LAKO5@%60V7J4B2J4UQ5S.png" srcset="/img/loading.gif" alt="img"></p>
+<p>其中</p>
+<pre><code class="hljs python">accuracy = (TP + TN )/( TP + FP + TN + FN)
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)</code></pre>
+
+<p>得到准确率、精确率和召回率。</p>
+<p>个人理解：</p>
+<p>准确率类似我们通常意义上的正确率，无论正负样本，都算进去</p>
+<p>精确率相当于查准率，指看重是否有被误判为正样本的存在</p>
+<p>召回率相当于正样本放出去收回的比例。</p>
+<p>文件名a_b:a表示训练数量，b表示测试数量</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>accuracy</th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>500_200</td>
+<td>0.81</td>
+<td>1.0</td>
+<td>0.7724550898203593</td>
+</tr>
+<tr>
+<td>800_300</td>
+<td>0.8266666666666667</td>
+<td>0.9944444444444445</td>
+<td>0.7782608695652173</td>
+</tr>
+<tr>
+<td>1000_300</td>
+<td>0.91</td>
+<td>0.9797979797979798</td>
+<td>0.8940092165898618</td>
+</tr>
+<tr>
+<td>1500_400</td>
+<td>0.9225</td>
+<td>0.96875</td>
+<td>0.9269102990033222</td>
+</tr>
+<tr>
+<td>3000_500</td>
+<td>0.952</td>
+<td>0.9622093023255814</td>
+<td>0.9678362573099415</td>
+</tr>
+</tbody></table>
+<p>500_200：{“accuracy”: 0.81, “precision “: 1.0, “recall”: 0.7724550898203593, “train_spam_in_rows”: 430, “train_ham_in_rows”: 70, “test_spam_in_rows”: 167, “test_ham_in_rows”: 33}</p>
+<p>800_300:{“accuracy”: 0.8266666666666667, “precision “: 0.9944444444444445, “recall”: 0.7782608695652173, “train_spam_in_rows”: 675, “train_ham_in_rows”: 125, “test_spam_in_rows”: 230, “test_ham_in_rows”: 70}</p>
+<p>1000_300:{“accuracy”: 0.91, “precision “: 0.9797979797979798, “recall”: 0.8940092165898618, “train_spam_in_rows”: 827, “train_ham_in_rows”: 173, “test_spam_in_rows”: 217, “test_ham_in_rows”: 83}</p>
+<p>1500_400:{“accuracy”: 0.9225, “precision “: 0.96875, “recall”: 0.9269102990033222, “train_spam_in_rows”: 1177, “train_ham_in_rows”: 323, “test_spam_in_rows”: 301, “test_ham_in_rows”: 99}</p>
+<p>3000_500:{“accuracy”: 0.952, “precision “: 0.9622093023255814, “recall”: 0.9678362573099415, “train_spam_in_rows”: 2263, “train_ham_in_rows”: 737, “test_spam_in_rows”: 342, “test_ham_in_rows”: 158}</p>
+<p>可以看到，使用贝叶斯推断进行垃圾邮件的分类有非常良好的效果，而且准确率非常高。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "bayesian&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

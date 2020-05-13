@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 
 
@@ -68,7 +68,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/">
               <i class="iconfont icon-home-fill"></i>
-              Home</a>
+              首页</a>
           </li>
         
           
@@ -77,7 +77,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/archives/">
               <i class="iconfont icon-archive-fill"></i>
-              Archives</a>
+              归档</a>
           </li>
         
           
@@ -86,7 +86,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/categories/">
               <i class="iconfont icon-category-fill"></i>
-              Categories</a>
+              分类</a>
           </li>
         
           
@@ -95,7 +95,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/tags/">
               <i class="iconfont icon-tags-fill"></i>
-              Tags</a>
+              标签</a>
           </li>
         
           
@@ -104,7 +104,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/about/">
               <i class="iconfont icon-user-fill"></i>
-              About</a>
+              关于</a>
           </li>
         
         
@@ -157,15 +157,25 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/13/hello-world/">Hello World</a>
+      <a class="index-header" href="/2020/05/13/bayesian/">bayesian</a>
 
-      <a href="/2020/05/13/hello-world/" class="index-excerpt">
+      <a href="/2020/05/13/bayesian/" class="index-excerpt">
         
         
           
         
-        <div>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick</div>
+        <div>bayesian原理：github贝叶斯原理
+机器学习实战
+贝叶斯处理垃圾邮件/可选择词袋、词集模式
+数据集在此下载
+默认通过词集模型来进行表示。
+词集模式：输入邮件的分词与词汇表对照,出现的标为1
+词袋模式：输入邮件的分词与词汇表对照,出现的标为出现次数
+对应函数
+def setOfWords2Vec(vocabList, inputSet):
+    '''
+    词集模型
+    输入邮件</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -204,7 +214,7 @@ Quick</div>
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -213,7 +223,7 @@ Quick</div>
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

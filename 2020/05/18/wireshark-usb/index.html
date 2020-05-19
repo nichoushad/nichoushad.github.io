@@ -199,7 +199,7 @@
 <pre><code class="hljs shell">tshark -r example.pcap -T fields -e usb.capdata &gt; result.txt</code></pre>
 
 <p>将usb数据导入result.txt中</p>
-<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150404810.png" srcset="/img/loading.gif" alt="image-20200519150404810"></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/333.png" srcset="/img/loading.gif" alt=""></p>
 <p>将result.txt的编码更改为utf-8</p>
 <h5 id="usb流量介绍"><a href="#usb流量介绍" class="headerlink" title="usb流量介绍"></a>usb流量介绍</h5><p>这里我们只关注USB流量中的键盘流量和鼠标流量。</p>
 <p>键盘数据包的数据长度为8个字节，击键信息集中在第3个字节，每次key stroke都会产生一个keyboard event usb packet。</p>
@@ -224,9 +224,9 @@ output = <span class="hljs-string">""</span>
         output += mappings[n]
 print(<span class="hljs-string">'output :n'</span> + output)</code></pre>
 
-<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150701664.png" srcset="/img/loading.gif" alt="image-20200519150701664"></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200519150657.png" srcset="/img/loading.gif" alt=""></p>
 <p>对好友杨三金使用骚扰攻击，之前在键盘中输入这些值，程序运行得到的结果为：</p>
-<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150755070.png" srcset="/img/loading.gif" alt="image-20200519150755070"></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/555.png" srcset="/img/loading.gif" alt=""></p>
 <p>output :nAAAAABBBABGCBFBDACEDFDDDFDFDFEDEDCFAIDCDCCCDCCCCGCCCBBCFCBBCBABBCABBBAAACAAAAAAAAAACABBAAAAAAAAACAA11111111111111n222222222222n3333333333nARREYOOU GOODnMALIIAYA[DEL][DEL]XIYAn422224411124441224441124nTHHIS IIS A FLAGnABBAAA</p>
 <h5 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h5><p>与输入基本相符合。其中会有其他影响要素导致无法完全符合，例如鼠标的数据包未经过严格过滤，还有键盘数据传输的各种因素。</p>
 <p>假如某企业中有内鬼，对物理机直接操作，虽然在系统上删除了来访记录，usb传输流量可能也会残留，对usb传输流量进行分析可能也是一种办法。</p>

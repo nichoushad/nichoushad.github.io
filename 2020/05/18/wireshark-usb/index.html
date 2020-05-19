@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    0 字
+                    922 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    1
+                    11
                      分钟
                   </span>
                 
@@ -182,12 +182,68 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              
+              <h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p>利用wireshark还能实现哪些网络取证,要求自己设计一试验场景,并进行验证。</p>
+<p>Usb传输取证（进行此取证必须要下载wireshark中的USBPcap插件）</p>
+<h3 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h3><h5 id="Usb传输取证介绍"><a href="#Usb传输取证介绍" class="headerlink" title="Usb传输取证介绍"></a>Usb传输取证介绍</h5><p>在我们开始操作之前，我觉得还是得给大家介绍一些有关USB设备的基础知识。USB有其自己的标准和规范。基本而言，我们可以通过以下三种方式来使用USB：</p>
+<pre><code class="hljs properties"><span class="hljs-attr">USB</span> <span class="hljs-string">UART接口</span>
+<span class="hljs-attr">USB</span> <span class="hljs-string">HID（交互设备）</span>
+<span class="hljs-attr">USB存储设备</span></code></pre>
+
+<p>UART，即通用异步接收／发送器。这类设备只能够利用USB来进行数据的接收和发送操作。实际上，这类设备与普通的通信设备并没有本质上的区别。</p>
+<p>HID，即人机交互设备。这也是USB作为接口来使用的一种典型应用。这类设备包括键盘，鼠标，游戏控制器，以及很多简单的显示设备等等。</p>
+<p>最后就是USB存储设备，这也是最常见的一种USB使用形式。比如说外接硬盘，U盘和闪存驱动器等等，这些都属于USB存储设备这一类。</p>
+<h5 id="wireshark准备工作"><a href="#wireshark准备工作" class="headerlink" title="wireshark准备工作"></a>wireshark准备工作</h5><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150335090.png" srcset="/img/loading.gif" alt="image-20200519150335090"></p>
+<p>选择<strong>USBPcap1</strong>进行监听。</p>
+<p>导出<strong>exmaple.pcap</strong>包</p>
+<p>在<strong>wireshark</strong>目录下运行</p>
+<pre><code class="hljs shell">tshark -r example.pcap -T fields -e usb.capdata &gt; result.txt</code></pre>
+
+<p>将usb数据导入result.txt中</p>
+<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150404810.png" srcset="/img/loading.gif" alt="image-20200519150404810"></p>
+<p>将result.txt的编码更改为utf-8</p>
+<h5 id="usb流量介绍"><a href="#usb流量介绍" class="headerlink" title="usb流量介绍"></a>usb流量介绍</h5><p>这里我们只关注USB流量中的键盘流量和鼠标流量。</p>
+<p>键盘数据包的数据长度为8个字节，击键信息集中在第3个字节，每次key stroke都会产生一个keyboard event usb packet。</p>
+<p>鼠标数据包的数据长度为4个字节，第一个字节代表按键，当取0x00时，代表没有按键、为0x01时，代表按左键，为0x02时，代表当前按键为右键。第二个字节可以看成是一个signed byte类型，其最高位为符号位，当这个值为正时，代表鼠标水平右移多少像素，为负时，代表水平左移多少像素。第三个字节与第二字节类似，代表垂直上下移动的偏移。</p>
+<h5 id="usb流量分析"><a href="#usb流量分析" class="headerlink" title="usb流量分析"></a>usb流量分析</h5><p>网上查阅资料得到各按键的值，写一个python脚本来解析USB键盘流量：</p>
+<pre><code class="hljs python">mappings = &#123; <span class="hljs-number">0x04</span>:<span class="hljs-string">"A"</span>,  <span class="hljs-number">0x05</span>:<span class="hljs-string">"B"</span>,  <span class="hljs-number">0x06</span>:<span class="hljs-string">"C"</span>, <span class="hljs-number">0x07</span>:<span class="hljs-string">"D"</span>, <span class="hljs-number">0x08</span>:<span class="hljs-string">"E"</span>, <span class="hljs-number">0x09</span>:<span class="hljs-string">"F"</span>, <span class="hljs-number">0x0A</span>:<span class="hljs-string">"G"</span>,  <span class="hljs-number">0x0B</span>:<span class="hljs-string">"H"</span>, <span class="hljs-number">0x0C</span>:<span class="hljs-string">"I"</span>,  <span class="hljs-number">0x0D</span>:<span class="hljs-string">"J"</span>, <span class="hljs-number">0x0E</span>:<span class="hljs-string">"K"</span>, <span class="hljs-number">0x0F</span>:<span class="hljs-string">"L"</span>, <span class="hljs-number">0x10</span>:<span class="hljs-string">"M"</span>, <span class="hljs-number">0x11</span>:<span class="hljs-string">"N"</span>,<span class="hljs-number">0x12</span>:<span class="hljs-string">"O"</span>,  <span class="hljs-number">0x13</span>:<span class="hljs-string">"P"</span>, <span class="hljs-number">0x14</span>:<span class="hljs-string">"Q"</span>, <span class="hljs-number">0x15</span>:<span class="hljs-string">"R"</span>, <span class="hljs-number">0x16</span>:<span class="hljs-string">"S"</span>, <span class="hljs-number">0x17</span>:<span class="hljs-string">"T"</span>, <span class="hljs-number">0x18</span>:<span class="hljs-string">"U"</span>,<span class="hljs-number">0x19</span>:<span class="hljs-string">"V"</span>, <span class="hljs-number">0x1A</span>:<span class="hljs-string">"W"</span>, <span class="hljs-number">0x1B</span>:<span class="hljs-string">"X"</span>, <span class="hljs-number">0x1C</span>:<span class="hljs-string">"Y"</span>, <span class="hljs-number">0x1D</span>:<span class="hljs-string">"Z"</span>, <span class="hljs-number">0x1E</span>:<span class="hljs-string">"1"</span>, <span class="hljs-number">0x1F</span>:<span class="hljs-string">"2"</span>, <span class="hljs-number">0x20</span>:<span class="hljs-string">"3"</span>, <span class="hljs-number">0x21</span>:<span class="hljs-string">"4"</span>, <span class="hljs-number">0x22</span>:<span class="hljs-string">"5"</span>,  <span class="hljs-number">0x23</span>:<span class="hljs-string">"6"</span>, <span class="hljs-number">0x24</span>:<span class="hljs-string">"7"</span>, <span class="hljs-number">0x25</span>:<span class="hljs-string">"8"</span>, <span class="hljs-number">0x26</span>:<span class="hljs-string">"9"</span>, <span class="hljs-number">0x27</span>:<span class="hljs-string">"0"</span>, <span class="hljs-number">0x28</span>:<span class="hljs-string">"n"</span>, <span class="hljs-number">0x2a</span>:<span class="hljs-string">"[DEL]"</span>,  <span class="hljs-number">0X2B</span>:<span class="hljs-string">"    "</span>, <span class="hljs-number">0x2C</span>:<span class="hljs-string">" "</span>,  <span class="hljs-number">0x2D</span>:<span class="hljs-string">"-"</span>, <span class="hljs-number">0x2E</span>:<span class="hljs-string">"="</span>, <span class="hljs-number">0x2F</span>:<span class="hljs-string">"["</span>,  <span class="hljs-number">0x30</span>:<span class="hljs-string">"]"</span>,  <span class="hljs-number">0x31</span>:<span class="hljs-string">"\\"</span>, <span class="hljs-number">0x32</span>:<span class="hljs-string">"~"</span>, <span class="hljs-number">0x33</span>:<span class="hljs-string">";"</span>,  <span class="hljs-number">0x34</span>:<span class="hljs-string">"'"</span>, <span class="hljs-number">0x36</span>:<span class="hljs-string">","</span>,  <span class="hljs-number">0x37</span>:<span class="hljs-string">"."</span> &#125;
+nums = []
+keys = open(<span class="hljs-string">'result.txt'</span>).readlines()
+
+<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> keys:
+    <span class="hljs-keyword">if</span> line == <span class="hljs-string">'\n'</span>:
+        <span class="hljs-keyword">continue</span>
+    nums.append(int(line[<span class="hljs-number">4</span>:<span class="hljs-number">6</span>],<span class="hljs-number">16</span>))
+
+print(nums)
+
+output = <span class="hljs-string">""</span>
+<span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> nums:
+    <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span> :
+        <span class="hljs-keyword">continue</span>
+    <span class="hljs-keyword">if</span> n <span class="hljs-keyword">in</span> mappings:
+        output += mappings[n]
+print(<span class="hljs-string">'output :n'</span> + output)</code></pre>
+
+<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150701664.png" srcset="/img/loading.gif" alt="image-20200519150701664"></p>
+<p>对好友杨三金使用骚扰攻击，之前在键盘中输入这些值，程序运行得到的结果为：</p>
+<p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150755070.png" srcset="/img/loading.gif" alt="image-20200519150755070"></p>
+<p>output :nAAAAABBBABGCBFBDACEDFDDDFDFDFEDEDCFAIDCDCCCDCCCCGCCCBBCFCBBCBABBCABBBAAACAAAAAAAAAACABBAAAAAAAAACAA11111111111111n222222222222n3333333333nARREYOOU GOODnMALIIAYA[DEL][DEL]XIYAn422224411124441224441124nTHHIS IIS A FLAGnABBAAA</p>
+<h5 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h5><p>与输入基本相符合。其中会有其他影响要素导致无法完全符合，例如鼠标的数据包未经过严格过滤，还有键盘数据传输的各种因素。</p>
+<p>假如某企业中有内鬼，对物理机直接操作，虽然在系统上删除了来访记录，usb传输流量可能也会残留，对usb传输流量进行分析可能也是一种办法。</p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>自己设计实验的环节中，我选择了自己感兴趣的usb传输取证，对usb协议有了些许了解。</p>
+
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wireshark/">wireshark</a>
+                    
+                  </div>
                 
               </div>
               

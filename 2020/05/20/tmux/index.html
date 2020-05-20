@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/botanical.png">
+  <link rel="icon" type="image/png" href="/img/botanical.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>tmux速查表 - zhazhafeng</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>zhazhafeng's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/xue.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-20 22:06">
+                    2020年5月20日 晚上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.6k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    20
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Tmux-快捷键-amp-速查表-amp-简明教程"><a href="#Tmux-快捷键-amp-速查表-amp-简明教程" class="headerlink" title="Tmux 快捷键 &amp; 速查表 &amp; 简明教程"></a>Tmux 快捷键 &amp; 速查表 &amp; 简明教程</h1><p>启动新会话：</p>
+<pre><code class="hljs haxe">tmux [<span class="hljs-keyword">new</span> <span class="hljs-type"></span>-s 会话名 -n 窗口名]</code></pre>
+
+<p>恢复会话：</p>
+<pre><code class="hljs ada">tmux <span class="hljs-keyword">at</span> [-t 会话名]</code></pre>
+
+<p>列出所有会话：</p>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">tmux ls</span></code></pre>
+
+<p>关闭会话：</p>
+<pre><code class="hljs sql">tmux <span class="hljs-keyword">kill</span>-<span class="hljs-keyword">session</span> -t 会话名</code></pre>
+
+<p>关闭所有会话：</p>
+<pre><code class="hljs stata">tmux <span class="hljs-keyword">ls</span> | grep : | cut -<span class="hljs-keyword">d</span>. -f1 | awk '&#123;<span class="hljs-keyword">print</span> <span class="hljs-built_in">substr</span>(<span class="hljs-variable">$1</span>, 0, <span class="hljs-built_in">length</span>(<span class="hljs-variable">$1</span>)-1)&#125;' | xargs kill</code></pre>
+
+<h1 id="在-Tmux-中，按下-Tmux-前缀-ctrl-b，然后："><a href="#在-Tmux-中，按下-Tmux-前缀-ctrl-b，然后：" class="headerlink" title="在 Tmux 中，按下 Tmux 前缀 ctrl+b，然后："></a>在 Tmux 中，按下 Tmux 前缀 <code>ctrl+b</code>，然后：</h1><h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><pre><code class="hljs elixir"><span class="hljs-symbol">:new&lt;</span>回车&gt;  启动新会话
+s           列出所有会话
+<span class="hljs-variable">$ </span>          重命名当前会话</code></pre>
+
+<h2 id="窗口-标签页"><a href="#窗口-标签页" class="headerlink" title="窗口 (标签页)"></a>窗口 (标签页)</h2><pre><code class="hljs properties"><span class="hljs-attr">c</span>  <span class="hljs-string">创建新窗口</span>
+<span class="hljs-attr">w</span>  <span class="hljs-string">列出所有窗口</span>
+<span class="hljs-attr">n</span>  <span class="hljs-string">后一个窗口</span>
+<span class="hljs-attr">p</span>  <span class="hljs-string">前一个窗口</span>
+<span class="hljs-attr">f</span>  <span class="hljs-string">查找窗口</span>
+<span class="hljs-meta">,</span>  <span class="hljs-string">重命名当前窗口</span>
+<span class="hljs-meta">&amp;</span>  <span class="hljs-string">关闭当前窗口</span></code></pre>
+
+<h2 id="调整窗口排序"><a href="#调整窗口排序" class="headerlink" title="调整窗口排序"></a>调整窗口排序</h2><pre><code class="hljs smali">swap-window -s 3 -t 1  交换 3 号和 1 号窗口
+swap-window -t 1       交换当前和 1 号窗口
+move-window -t 1       移动当前窗口到 1 号</code></pre>
+
+<h2 id="窗格（分割窗口）"><a href="#窗格（分割窗口）" class="headerlink" title="窗格（分割窗口）"></a>窗格（分割窗口）</h2><pre><code class="hljs properties"><span class="hljs-meta">%</span>  <span class="hljs-string">垂直分割</span>
+<span class="hljs-meta">"</span>  <span class="hljs-string">水平分割</span>
+<span class="hljs-attr">o</span>  <span class="hljs-string">交换窗格</span>
+<span class="hljs-attr">x</span>  <span class="hljs-string">关闭窗格</span>
+<span class="hljs-meta">⍽</span>  <span class="hljs-string">左边这个符号代表空格键 - 切换布局</span>
+<span class="hljs-attr">q</span> <span class="hljs-string">显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span>
+<span class="hljs-meta">&#123;</span> <span class="hljs-string">与上一个窗格交换位置</span>
+<span class="hljs-meta">&#125;</span> <span class="hljs-string">与下一个窗格交换位置</span>
+<span class="hljs-attr">z</span> <span class="hljs-string">切换窗格最大化/最小化</span></code></pre>
+
+<h2 id="同步窗格"><a href="#同步窗格" class="headerlink" title="同步窗格"></a>同步窗格</h2><p>这么做可以切换到想要的窗口，输入 Tmux 前缀和一个冒号呼出命令提示行，然后输入：</p>
+<pre><code class="hljs css"><span class="hljs-selector-pseudo">:setw</span> <span class="hljs-selector-tag">synchronize-panes</span></code></pre>
+
+<p>你可以指定开或关，否则重复执行命令会在两者间切换。 这个选项值针对某个窗口有效，不会影响别的会话和窗口。 完事儿之后再次执行命令来关闭。<a href="http://blog.sanctum.geek.nz/sync-tmux-panes/" target="_blank" rel="noopener">帮助</a></p>
+<h2 id="调整窗格尺寸"><a href="#调整窗格尺寸" class="headerlink" title="调整窗格尺寸"></a>调整窗格尺寸</h2><p>如果你不喜欢默认布局，可以重调窗格的尺寸。虽然这很容易实现，但一般不需要这么干。这几个命令用来调整窗格：</p>
+<pre><code class="hljs routeros">PREFIX : resize-pane -D          当前窗格向下扩大 1 格
+PREFIX : resize-pane -U          当前窗格向上扩大 1 格
+PREFIX : resize-pane -L          当前窗格向左扩大 1 格
+PREFIX : resize-pane -R          当前窗格向右扩大 1 格
+PREFIX : resize-pane -D 20       当前窗格向下扩大 20 格
+PREFIX : resize-pane -t 2 -L 20  编号为 2 的窗格向左扩大 20 格</code></pre>
+
+<h2 id="文本复制模式："><a href="#文本复制模式：" class="headerlink" title="文本复制模式："></a>文本复制模式：</h2><p>按下 <code>PREFIX-[</code> 进入文本复制模式。可以使用方向键在屏幕中移动光标。默认情况下，方向键是启用的。在配置文件中启用 Vim 键盘布局来切换窗口、调整窗格大小。Tmux 也支持 Vi 模式。要是想启用 Vi 模式，只需要把下面这一行添加到 .tmux.conf 中：</p>
+<pre><code class="hljs vim">setw -g <span class="hljs-keyword">mode</span>-<span class="hljs-built_in">keys</span> <span class="hljs-keyword">vi</span></code></pre>
+
+<p>启用这条配置后，就可以使用 h、j、k、l 来移动光标了。</p>
+<p>想要退出文本复制模式的话，按下回车键就可以了。然后按下 <code>PREFIX-]</code> 粘贴刚才复制的文本。</p>
+<p>一次移动一格效率低下，在 Vi 模式启用的情况下，可以辅助一些别的快捷键高效工作。</p>
+<p>例如，可以使用 w 键逐词移动，使用 b 键逐词回退。使用 f 键加上任意字符跳转到当前行第一次出现该字符的位置，使用 F 键达到相反的效果。</p>
+<pre><code class="hljs routeros">vi             emacs        功能
+^              M-m          反缩进
+Escape         C-g          清除选定内容
+Enter          M-w          复制选定内容
+j              Down         光标下移
+h              Left         光标左移
+l              Right        光标右移
+L                           光标移到尾行
+M              M-r          光标移到中间行
+H              M-R          光标移到首行
+k              Up           光标上移
+d              C-u          删除整行
+D              C-k          删除到行末
+$              C-e          移到行尾
+:              g            前往指定行
+C-d            M-Down       向下滚动半屏
+C-u            M-Up         向上滚动半屏
+C-f           <span class="hljs-built_in"> Page </span>down    下一页
+w              M-f          下一个词
+p              C-y          粘贴
+C-b           <span class="hljs-built_in"> Page </span>up      上一页
+b              M-b          上一个词
+q              Escape       退出
+C-Down <span class="hljs-keyword">or</span> J    C-Down       向下翻
+C-Up <span class="hljs-keyword">or</span> K      C-Up         向下翻
+n              n            继续搜索
+?              C-r          向前搜索
+/              C-s          向后搜索
+0              C-a          移到行首
+Space          C-Space      开始选中
+               C-t          字符调序</code></pre>
+
+<h2 id="杂项："><a href="#杂项：" class="headerlink" title="杂项："></a>杂项：</h2><pre><code class="hljs ada">d  退出 tmux（tmux 仍在后台运行）
+t  窗口中央显示一个数字时钟
+?  列出所有快捷键
+:  命令提示符</code></pre>
+
+<h2 id="配置选项："><a href="#配置选项：" class="headerlink" title="配置选项："></a>配置选项：</h2><pre><code class="hljs smali"><span class="hljs-comment"># 鼠标支持 - 设置为 on 来启用鼠标(与 2.1 之前的版本有区别，请自行查阅 man page)</span>
+* set -g mouse on
+
+<span class="hljs-comment"># 设置默认终端模式为 256color</span>
+set -g default-terminal <span class="hljs-string">"screen-256color"</span>
+
+<span class="hljs-comment"># 启用活动警告</span>
+setw -g<span class="hljs-built_in"> monitor-activity </span>on
+set -g visual-activity on
+
+<span class="hljs-comment"># 居中窗口列表</span>
+set -g status-justify centre
+
+<span class="hljs-comment"># 最大化/恢复窗格</span>
+unbind Up bind Up<span class="hljs-built_in"> new-window </span>-d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
+unbind Down
+bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp</code></pre>
+
+<h2 id="参考配置文件（-tmux-conf）："><a href="#参考配置文件（-tmux-conf）：" class="headerlink" title="参考配置文件（~/.tmux.conf）："></a>参考配置文件（~/.tmux.conf）：</h2><p>下面这份配置是我使用 Tmux 几年来逐渐精简后的配置，请自取。</p>
+<pre><code class="hljs sql"><span class="hljs-comment"># -----------------------------------------------------------------------------</span>
+<span class="hljs-comment"># Tmux 基本配置 - 要求 Tmux &gt;= 2.3</span>
+<span class="hljs-comment"># 如果不想使用插件，只需要将此节的内容写入 ~/.tmux.conf 即可</span>
+<span class="hljs-comment"># -----------------------------------------------------------------------------</span>
+
+<span class="hljs-comment"># C-b 和 VIM 冲突，修改 Prefix 组合键为 Control-Z，按键距离近</span>
+<span class="hljs-keyword">set</span> -g prefix C-z
+
+<span class="hljs-keyword">set</span> -g base-<span class="hljs-keyword">index</span>         <span class="hljs-number">1</span>     <span class="hljs-comment"># 窗口编号从 1 开始计数</span>
+<span class="hljs-keyword">set</span> -g display-panes-<span class="hljs-built_in">time</span> <span class="hljs-number">10000</span> <span class="hljs-comment"># PREFIX-Q 显示编号的驻留时长，单位 ms</span>
+<span class="hljs-keyword">set</span> -g mouse              <span class="hljs-keyword">on</span>    <span class="hljs-comment"># 开启鼠标</span>
+<span class="hljs-keyword">set</span> -g pane-base-<span class="hljs-keyword">index</span>    <span class="hljs-number">1</span>     <span class="hljs-comment"># 窗格编号从 1 开始计数</span>
+<span class="hljs-keyword">set</span> -g renumber-windows   <span class="hljs-keyword">on</span>    <span class="hljs-comment"># 关掉某个窗口后，编号重排</span>
+
+setw -g <span class="hljs-keyword">allow</span>-<span class="hljs-keyword">rename</span>      <span class="hljs-keyword">off</span>   <span class="hljs-comment"># 禁止活动进程修改窗口名</span>
+setw -g <span class="hljs-keyword">automatic</span>-<span class="hljs-keyword">rename</span>  <span class="hljs-keyword">off</span>   <span class="hljs-comment"># 禁止自动命名新窗口</span>
+setw -g <span class="hljs-keyword">mode</span>-<span class="hljs-keyword">keys</span>         vi    <span class="hljs-comment"># 进入复制模式的时候使用 vi 键位（默认是 EMACS）</span>
+
+<span class="hljs-comment"># -----------------------------------------------------------------------------</span>
+<span class="hljs-comment"># 使用插件 - via tpm</span>
+<span class="hljs-comment">#   1. 执行 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</span>
+<span class="hljs-comment">#   2. 执行 bash ~/.tmux/plugins/tpm/bin/install_plugins</span>
+<span class="hljs-comment"># -----------------------------------------------------------------------------</span>
+
+setenv -g TMUX_PLUGIN_MANAGER_PATH <span class="hljs-string">'~/.tmux/plugins'</span>
+
+<span class="hljs-comment"># 推荐的插件（请去每个插件的仓库下读一读使用教程）</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'seebi/tmux-colors-solarized'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tmux-pain-control'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tmux-prefix-highlight'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tmux-resurrect'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tmux-sensible'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tmux-yank'</span>
+<span class="hljs-keyword">set</span> -g @<span class="hljs-keyword">plugin</span> <span class="hljs-string">'tmux-plugins/tpm'</span>
+
+<span class="hljs-comment"># tmux-resurrect</span>
+<span class="hljs-keyword">set</span> -g @resurrect-dir <span class="hljs-string">'~/.tmux/resurrect'</span>
+
+<span class="hljs-comment"># tmux-prefix-highlight</span>
+<span class="hljs-keyword">set</span> -g <span class="hljs-keyword">status</span>-<span class="hljs-keyword">right</span> <span class="hljs-string">'#&#123;prefix_highlight&#125; #H | %a %Y-%m-%d %H:%M'</span>
+<span class="hljs-keyword">set</span> -g @prefix_highlight_show_copy_mode <span class="hljs-string">'on'</span>
+<span class="hljs-keyword">set</span> -g @prefix_highlight_copy_mode_attr <span class="hljs-string">'fg=white,bg=blue'</span>
+
+<span class="hljs-comment"># 初始化 TPM 插件管理器 (放在配置文件的最后)</span>
+run <span class="hljs-string">'~/.tmux/plugins/tpm/tpm'</span>
+
+<span class="hljs-comment"># -----------------------------------------------------------------------------</span>
+<span class="hljs-comment"># 结束</span>
+<span class="hljs-comment"># -----------------------------------------------------------------------------</span></code></pre>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/tmux/">tmux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">随意开火</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/20/git/">
+                        <span class="hidden-mobile">git连接远程仓库</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://github.com/nichoushad" target="_blank" rel="nofollow noopener"><span>github</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="http://www.hdu.edu.cn/" target="_blank" rel="nofollow noopener">
+        <span>hdu</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "tmux速查表&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

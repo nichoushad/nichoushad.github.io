@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/botanical.png">
+  <link rel="icon" type="image/png" href="/img/botanical.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>pandas的基本使用 - zhazhafeng</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>zhazhafeng's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/xue.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-20 13:13">
+                    2020年5月20日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    973 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    13
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><pre><code class="hljs python">index = pd.read_csv(<span class="hljs-string">'./email/full/index'</span>, sep=<span class="hljs-string">' '</span>, header=<span class="hljs-literal">None</span>, names=[<span class="hljs-string">'type'</span>, <span class="hljs-string">'path'</span>], skiprows=skiprows, nrows=nrows)</code></pre>
+
+<p>参数skiprows指跳过几行开始读取，nrows指从该行开始读取几行，sep指读取中的分隔符，index文件中没有列标，所以给了个type，path的列标。header就是文件第一行非标签，加上个names作为标签。</p>
+<p>然后通过type和path组合，通过get_emailframe()函数获取相应path中的数据</p>
+<h2 id="数据表信息查看"><a href="#数据表信息查看" class="headerlink" title="数据表信息查看"></a>数据表信息查看</h2><h2 id="1、维度查看："><a href="#1、维度查看：" class="headerlink" title="1、维度查看："></a>1、维度查看：</h2><pre><code class="hljs python">df.shape</code></pre>
+
+<h2 id="2、数据表基本信息（维度、列名称、数据格式、所占空间等）："><a href="#2、数据表基本信息（维度、列名称、数据格式、所占空间等）：" class="headerlink" title="2、数据表基本信息（维度、列名称、数据格式、所占空间等）："></a>2、数据表基本信息（维度、列名称、数据格式、所占空间等）：</h2><pre><code class="hljs python">df.info()</code></pre>
+
+<h2 id="3、每一列数据的格式："><a href="#3、每一列数据的格式：" class="headerlink" title="3、每一列数据的格式："></a>3、每一列数据的格式：</h2><pre><code class="hljs python">df.dtypes</code></pre>
+
+<h2 id="4、某一列格式："><a href="#4、某一列格式：" class="headerlink" title="4、某一列格式："></a>4、某一列格式：</h2><pre><code class="hljs python">df[<span class="hljs-string">'B'</span>].dtype</code></pre>
+
+<h2 id="5、空值："><a href="#5、空值：" class="headerlink" title="5、空值："></a>5、空值：</h2><pre><code class="hljs python">df.isnull()</code></pre>
+
+<h2 id="6、查看某一列空值："><a href="#6、查看某一列空值：" class="headerlink" title="6、查看某一列空值："></a>6、查看某一列空值：</h2><pre><code class="hljs python">df.isnull()</code></pre>
+
+<h2 id="7、查看某一列的唯一值："><a href="#7、查看某一列的唯一值：" class="headerlink" title="7、查看某一列的唯一值："></a>7、查看某一列的唯一值：</h2><pre><code class="hljs python">df[<span class="hljs-string">'B'</span>].unique()</code></pre>
+
+<h2 id="8、查看数据表的值："><a href="#8、查看数据表的值：" class="headerlink" title="8、查看数据表的值："></a>8、查看数据表的值：</h2><pre><code class="hljs python">df.values</code></pre>
+
+<h2 id="9、查看列名称："><a href="#9、查看列名称：" class="headerlink" title="9、查看列名称："></a>9、查看列名称：</h2><pre><code class="hljs python">df.columns</code></pre>
+
+<h2 id="10、查看前10行数据、后10行数据："><a href="#10、查看前10行数据、后10行数据：" class="headerlink" title="10、查看前10行数据、后10行数据："></a>10、查看前10行数据、后10行数据：</h2><pre><code class="hljs python">df.head() <span class="hljs-comment">#默认前10行数据</span>
+df.tail()    <span class="hljs-comment">#默认后10 行数据</span></code></pre>
+
+<h2 id="11-结合查询关键词"><a href="#11-结合查询关键词" class="headerlink" title="11.结合查询关键词"></a>11.结合查询关键词</h2><pre><code class="hljs python">spams_in_rows = index.loc[index[<span class="hljs-string">'type'</span>] == <span class="hljs-string">"spam"</span>].shape[<span class="hljs-number">0</span>]
+ham_in_rows = index.loc[index[<span class="hljs-string">'type'</span>] == <span class="hljs-string">"ham"</span>].shape[<span class="hljs-number">0</span>]</code></pre>
+
+<h1 id="三、数据表清洗"><a href="#三、数据表清洗" class="headerlink" title="三、数据表清洗"></a>三、数据表清洗</h1><h2 id="1、用数字0填充空值："><a href="#1、用数字0填充空值：" class="headerlink" title="1、用数字0填充空值："></a>1、用数字0填充空值：</h2><pre><code class="hljs python">df.fillna(value=<span class="hljs-number">0</span>)
+<span class="hljs-number">1</span></code></pre>
+
+<h2 id="2、使用列prince的均值对NA进行填充："><a href="#2、使用列prince的均值对NA进行填充：" class="headerlink" title="2、使用列prince的均值对NA进行填充："></a>2、使用列prince的均值对NA进行填充：</h2><pre><code class="hljs python">df[<span class="hljs-string">'prince'</span>].fillna(df[<span class="hljs-string">'prince'</span>].mean())</code></pre>
+
+<h2 id="3、清楚city字段的字符空格："><a href="#3、清楚city字段的字符空格：" class="headerlink" title="3、清楚city字段的字符空格："></a>3、清楚city字段的字符空格：</h2><pre><code class="hljs python">df[<span class="hljs-string">'city'</span>]=df[<span class="hljs-string">'city'</span>].map(str.strip)</code></pre>
+
+<h2 id="4、大小写转换："><a href="#4、大小写转换：" class="headerlink" title="4、大小写转换："></a>4、大小写转换：</h2><pre><code class="hljs python">df[<span class="hljs-string">'city'</span>]=df[<span class="hljs-string">'city'</span>].str.lower()</code></pre>
+
+<h2 id="5、更改数据格式："><a href="#5、更改数据格式：" class="headerlink" title="5、更改数据格式："></a>5、更改数据格式：</h2><pre><code class="hljs python">df[<span class="hljs-string">'price'</span>].astype(<span class="hljs-string">'int'</span>)</code></pre>
+
+<h2 id="6、更改列名称："><a href="#6、更改列名称：" class="headerlink" title="6、更改列名称："></a>6、更改列名称：</h2><pre><code class="hljs python">df.rename(columns=&#123;<span class="hljs-string">'category'</span>: <span class="hljs-string">'category-size'</span>&#125;)</code></pre>
+
+<h2 id="7、删除后出现的重复值："><a href="#7、删除后出现的重复值：" class="headerlink" title="7、删除后出现的重复值："></a>7、删除后出现的重复值：</h2><pre><code class="hljs python">df[<span class="hljs-string">'city'</span>].drop_duplicates()</code></pre>
+
+<h2 id="8-、删除先出现的重复值："><a href="#8-、删除先出现的重复值：" class="headerlink" title="8 、删除先出现的重复值："></a>8 、删除先出现的重复值：</h2><pre><code class="hljs python">df[<span class="hljs-string">'city'</span>].drop_duplicates(keep=<span class="hljs-string">'last'</span>)</code></pre>
+
+<h2 id="9、数据替换："><a href="#9、数据替换：" class="headerlink" title="9、数据替换："></a>9、数据替换：</h2><pre><code class="hljs python">df[<span class="hljs-string">'city'</span>].replace(<span class="hljs-string">'sh'</span>, <span class="hljs-string">'shanghai'</span>)</code></pre>
+
+<h1 id="四、数据预处理"><a href="#四、数据预处理" class="headerlink" title="四、数据预处理"></a>四、数据预处理</h1><h2 id="1、数据表合并"><a href="#1、数据表合并" class="headerlink" title="1、数据表合并"></a>1、数据表合并</h2><h3 id="1-1-merge"><a href="#1-1-merge" class="headerlink" title="1.1 merge"></a>1.1 merge</h3><pre><code class="hljs python">df_inner=pd.merge(df,df1,how=<span class="hljs-string">'inner'</span>)  <span class="hljs-comment"># 匹配合并，交集</span>
+df_left=pd.merge(df,df1,how=<span class="hljs-string">'left'</span>)        <span class="hljs-comment">#</span>
+df_right=pd.merge(df,df1,how=<span class="hljs-string">'right'</span>)
+df_outer=pd.merge(df,df1,how=<span class="hljs-string">'outer'</span>)  <span class="hljs-comment">#并集</span></code></pre>
+
+<h3 id="1-2-append"><a href="#1-2-append" class="headerlink" title="1.2 append"></a>1.2 append</h3><pre><code class="hljs python">result = df1.append(df2) <span class="hljs-comment">#</span></code></pre>
+
+<h2 id="2、设置索引列"><a href="#2、设置索引列" class="headerlink" title="2、设置索引列"></a>2、设置索引列</h2><pre><code class="hljs python">df_inner.set_index(<span class="hljs-string">'id'</span>)
+<span class="hljs-number">1</span></code></pre>
+
+<h2 id="3、按照特定列的值排序："><a href="#3、按照特定列的值排序：" class="headerlink" title="3、按照特定列的值排序："></a>3、按照特定列的值排序：</h2><pre><code class="hljs python">df_inner.sort_values(by=[<span class="hljs-string">'age'</span>])</code></pre>
+
+<h2 id="4、按照索引列排序："><a href="#4、按照索引列排序：" class="headerlink" title="4、按照索引列排序："></a>4、按照索引列排序：</h2><pre><code class="hljs python">df_inner.sort_index()</code></pre>
+
+<h2 id="5、如果prince列的值-gt-3000，group列显示high，否则显示low："><a href="#5、如果prince列的值-gt-3000，group列显示high，否则显示low：" class="headerlink" title="5、如果prince列的值&gt;3000，group列显示high，否则显示low："></a>5、如果prince列的值&gt;3000，group列显示high，否则显示low：</h2><pre><code class="hljs python">df_inner[<span class="hljs-string">'group'</span>] = np.where(df_inner[<span class="hljs-string">'price'</span>] &gt; <span class="hljs-number">3000</span>,<span class="hljs-string">'high'</span>,<span class="hljs-string">'low'</span>)</code></pre>
+
+<h2 id="6、对复合多个条件的数据进行分组标记"><a href="#6、对复合多个条件的数据进行分组标记" class="headerlink" title="6、对复合多个条件的数据进行分组标记"></a>6、对复合多个条件的数据进行分组标记</h2><pre><code class="hljs python">df_inner.loc[(df_inner[<span class="hljs-string">'city'</span>] == <span class="hljs-string">'beijing'</span>) &amp; (df_inner[<span class="hljs-string">'price'</span>] &gt;= <span class="hljs-number">4000</span>), <span class="hljs-string">'sign'</span>]=<span class="hljs-number">1</span></code></pre>
+
+<h3 id="7、对category字段的值依次进行分列，并创建数据表，索引值为df-inner的索引列，列名称为category和size"><a href="#7、对category字段的值依次进行分列，并创建数据表，索引值为df-inner的索引列，列名称为category和size" class="headerlink" title="7、对category字段的值依次进行分列，并创建数据表，索引值为df_inner的索引列，列名称为category和size"></a>7、对category字段的值依次进行分列，并创建数据表，索引值为df_inner的索引列，列名称为category和size</h3><pre><code class="hljs sas">pd.DataFrame((<span class="hljs-meta">x</span>.split(<span class="hljs-string">'-'</span>) for <span class="hljs-meta">x</span> <span class="hljs-meta">in</span> df_inner[<span class="hljs-string">'category'</span>]),<span class="hljs-meta">index</span>=df_inner.<span class="hljs-meta">index</span>,columns=[<span class="hljs-string">'category'</span>,<span class="hljs-string">'size'</span>]))</code></pre>
+
+<h2 id="8、将完成分裂后的数据表和原df-inner数据表进行匹配"><a href="#8、将完成分裂后的数据表和原df-inner数据表进行匹配" class="headerlink" title="8、将完成分裂后的数据表和原df_inner数据表进行匹配"></a>8、将完成分裂后的数据表和原df_inner数据表进行匹配</h2><pre><code class="hljs python">df_inner=pd.merge(df_inner,split,right_index=<span class="hljs-literal">True</span>, left_index=<span class="hljs-literal">True</span>)</code></pre>
+
+<h1 id="五、数据提取"><a href="#五、数据提取" class="headerlink" title="五、数据提取"></a>五、数据提取</h1><p>主要用到的三个函数：loc,iloc和ix，loc函数按标签值进行提取，iloc按位置进行提取，ix可以同时按标签和位置进行提取。</p>
+<h2 id="1、按索引提取单行的数值"><a href="#1、按索引提取单行的数值" class="headerlink" title="1、按索引提取单行的数值"></a>1、按索引提取单行的数值</h2><pre><code class="hljs css"><span class="hljs-selector-tag">df_inner</span><span class="hljs-selector-class">.loc</span><span class="hljs-selector-attr">[3]</span></code></pre>
+
+<h2 id="2、按索引提取区域行数值"><a href="#2、按索引提取区域行数值" class="headerlink" title="2、按索引提取区域行数值"></a>2、按索引提取区域行数值</h2><pre><code class="hljs angelscript">df_inner.iloc[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>]</code></pre>
+
+<h2 id="3、重设索引"><a href="#3、重设索引" class="headerlink" title="3、重设索引"></a>3、重设索引</h2><pre><code class="hljs sas">df_inner.<span class="hljs-meta">reset</span><span class="hljs-meta">_index(</span>)</code></pre>
+
+<h2 id="4、设置日期为索引"><a href="#4、设置日期为索引" class="headerlink" title="4、设置日期为索引"></a>4、设置日期为索引</h2><pre><code class="hljs python">df_inner=df_inner.set_index(<span class="hljs-string">'date'</span>) 
+<span class="hljs-number">1</span></code></pre>
+
+<h2 id="5、提取4日之前的所有数据"><a href="#5、提取4日之前的所有数据" class="headerlink" title="5、提取4日之前的所有数据"></a>5、提取4日之前的所有数据</h2><pre><code class="hljs python">df_inner[:<span class="hljs-string">'2013-01-04'</span>]</code></pre>
+
+<h2 id="7、适应iloc按位置单独提起数据"><a href="#7、适应iloc按位置单独提起数据" class="headerlink" title="7、适应iloc按位置单独提起数据"></a>7、适应iloc按位置单独提起数据</h2><pre><code class="hljs python">df_inner.iloc[[<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]] <span class="hljs-comment">#提取第0、2、5行，4、5列</span></code></pre>
+
+<h2 id="8、使用ix按索引标签和位置混合提取数据"><a href="#8、使用ix按索引标签和位置混合提取数据" class="headerlink" title="8、使用ix按索引标签和位置混合提取数据"></a>8、使用ix按索引标签和位置混合提取数据</h2><pre><code class="hljs python">df_inner.ix[:<span class="hljs-string">'2013-01-03'</span>,:<span class="hljs-number">4</span>] <span class="hljs-comment">#2013-01-03号之前，前四列数据</span></code></pre>
+
+<h2 id="9、判断city列的值是否为北京"><a href="#9、判断city列的值是否为北京" class="headerlink" title="9、判断city列的值是否为北京"></a>9、判断city列的值是否为北京</h2><pre><code class="hljs python">df_inner[<span class="hljs-string">'city'</span>].isin([<span class="hljs-string">'beijing'</span>])</code></pre>
+
+<h2 id="10、判断city列里是否包含beijing和shanghai，然后将符合条件的数据提取出来"><a href="#10、判断city列里是否包含beijing和shanghai，然后将符合条件的数据提取出来" class="headerlink" title="10、判断city列里是否包含beijing和shanghai，然后将符合条件的数据提取出来"></a>10、判断city列里是否包含beijing和shanghai，然后将符合条件的数据提取出来</h2><pre><code class="hljs python">df_inner.loc[df_inner[<span class="hljs-string">'city'</span>].isin([<span class="hljs-string">'beijing'</span>,<span class="hljs-string">'shanghai'</span>])]</code></pre>
+
+<h2 id="11、提取前三个字符，并生成数据表"><a href="#11、提取前三个字符，并生成数据表" class="headerlink" title="11、提取前三个字符，并生成数据表"></a>11、提取前三个字符，并生成数据表</h2><pre><code class="hljs python">pd.DataFrame(category.str[:<span class="hljs-number">3</span>])</code></pre>
+
+<h1 id="六、数据筛选"><a href="#六、数据筛选" class="headerlink" title="六、数据筛选"></a>六、数据筛选</h1><h1 id="七、数据汇总"><a href="#七、数据汇总" class="headerlink" title="七、数据汇总"></a>七、数据汇总</h1><p>主要函数是groupby和pivote_table</p>
+<h2 id="1、对所有的列进行计数汇总"><a href="#1、对所有的列进行计数汇总" class="headerlink" title="1、对所有的列进行计数汇总"></a>1、对所有的列进行计数汇总</h2><pre><code class="hljs less"><span class="hljs-selector-tag">df_inner</span><span class="hljs-selector-class">.groupby</span>(<span class="hljs-string">'city'</span>)<span class="hljs-selector-class">.count</span>()</code></pre>
+
+<h2 id="2、按城市对id字段进行计数"><a href="#2、按城市对id字段进行计数" class="headerlink" title="2、按城市对id字段进行计数"></a>2、按城市对id字段进行计数</h2><pre><code class="hljs less"><span class="hljs-selector-tag">df_inner</span><span class="hljs-selector-class">.groupby</span>(<span class="hljs-string">'city'</span>)<span class="hljs-selector-attr">['id']</span><span class="hljs-selector-class">.count</span>()</code></pre>
+
+<h2 id="3、对两个字段进行汇总计数"><a href="#3、对两个字段进行汇总计数" class="headerlink" title="3、对两个字段进行汇总计数"></a>3、对两个字段进行汇总计数</h2><pre><code class="hljs css"><span class="hljs-selector-tag">df_inner</span><span class="hljs-selector-class">.groupby</span>(<span class="hljs-selector-attr">[<span class="hljs-string">'city'</span>,<span class="hljs-string">'size'</span>]</span>)<span class="hljs-selector-attr">[<span class="hljs-string">'id'</span>]</span><span class="hljs-selector-class">.count</span>()</code></pre>
+
+<h2 id="4、对city字段进行汇总，并分别计算prince的合计和均值"><a href="#4、对city字段进行汇总，并分别计算prince的合计和均值" class="headerlink" title="4、对city字段进行汇总，并分别计算prince的合计和均值"></a>4、对city字段进行汇总，并分别计算prince的合计和均值</h2><pre><code class="hljs less"><span class="hljs-selector-tag">df_inner</span><span class="hljs-selector-class">.groupby</span>(<span class="hljs-string">'city'</span>)<span class="hljs-selector-attr">['price']</span><span class="hljs-selector-class">.agg</span>([len,np.sum, np.mean])</code></pre>
+
+
+
+<p>还有数据统计。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/pandas/">pandas</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">随意开火</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/18/wireshark-usb/">
+                        <span class="hidden-mobile">wireshark_usb</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://github.com/nichoushad" target="_blank" rel="nofollow noopener"><span>github</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="http://www.hdu.edu.cn/" target="_blank" rel="nofollow noopener">
+        <span>hdu</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "pandas的基本使用&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

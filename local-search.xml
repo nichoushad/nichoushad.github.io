@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>git连接远程仓库</title>
+    <link href="/2020/05/20/git/"/>
+    <url>/2020/05/20/git/</url>
+    
+    <content type="html"><![CDATA[<h2 id="git-ssh-key配置"><a href="#git-ssh-key配置" class="headerlink" title="git ssh key配置"></a>git ssh key配置</h2><h3 id="1-本地配置"><a href="#1-本地配置" class="headerlink" title="1. 本地配置"></a>1. 本地配置</h3><pre><code class="hljs shell">git config --global user.name "名字"git config --global user.emall "邮箱名"</code></pre><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">"your_email@example.com"</span></code></pre><p>代码参数含义：</p><p>-t 指定密钥类型，默认是 rsa ，可以省略。<br>-C 设置注释文字，比如邮箱。<br>-f 指定密钥文件存储文件名。</p><p>默认文件名为：/root/.ssh/id_rsa和/root/.ssh/id_rsa.pub</p><h3 id="2-添加id-rsa-pub到github上"><a href="#2-添加id-rsa-pub到github上" class="headerlink" title="2.添加id_rsa.pub到github上"></a>2.添加id_rsa.pub到github上</h3><p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/TIM%E6%88%AA%E5%9B%BE20200520193038.png" srcset="/img/loading.gif" alt=""></p><h1 id="2-连接远程仓库"><a href="#2-连接远程仓库" class="headerlink" title="2.连接远程仓库"></a>2.连接远程仓库</h1><pre><code class="hljs shell">git remote add origin git@github.com:nichoushad/yw.git</code></pre><p>若出错了：</p><pre><code class="hljs shell">git remote remove origin</code></pre><p>origin可以换成其他名字，默认为origin</p><pre><code class="hljs shell">git add .</code></pre><pre><code class="hljs shell">git commit -m "message"</code></pre><pre><code class="hljs shell">git push origin master</code></pre><h1 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a>ssh-keygen</h1><p>语法<br>ssh-keygen [-q] [-b bits] -t type [-N new_passphrase] [-C comment] [-f output_keyfile]<br>ssh-keygen -p [-P old_passphrase] [-N new_passphrase] [-f keyfile]<br>ssh-keygen -i [-f input_keyfile]<br>ssh-keygen -e [-f input_keyfile]<br>ssh-keygen -y [-f input_keyfile]<br>ssh-keygen -c [-P passphrase] [-C comment] [-f keyfile]<br>ssh-keygen -l [-f input_keyfile]<br>ssh-keygen -B [-f input_keyfile]<br>ssh-keygen -D reader<br>ssh-keygen -F hostname [-f known_hosts_file]<br>ssh-keygen -H [-f known_hosts_file]<br>ssh-keygen -R hostname [-f known_hosts_file]<br>ssh-keygen -U reader [-f input_keyfile]<br>ssh-keygen -r hostname [-f input_keyfile] [-g]<br>ssh-keygen -G output_file [-v] [-b bits] [-M memory] [-S start_point]<br>ssh-keygen -T output_file -f input_file [-v] [-a num_trials] [-W generator] </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>pandas的基本使用</title>
     <link href="/2020/05/20/pandas/"/>
     <url>/2020/05/20/pandas/</url>

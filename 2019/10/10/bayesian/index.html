@@ -185,18 +185,43 @@
               <h1 id="bayesian"><a href="#bayesian" class="headerlink" title="bayesian"></a>bayesian</h1><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><a href="https://github.com/nichoushad/bayesian" target="_blank" rel="noopener">github</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_two.html" target="_blank" rel="noopener">贝叶斯原理</a></p>
 <p><a href="https://github.com/Jack-Cherish/Machine-Learning" target="_blank" rel="noopener">机器学习实战</a></p>
 <p>贝叶斯处理垃圾邮件/可选择词袋、词集模式</p>
-<p><a href="[https://plg.uwaterloo.ca/~gvcormac/treccorpus06/](https://links.jianshu.com/go?to=https%3A%2F%2Fplg.uwaterloo.ca%2F~gvcormac%2Ftreccorpus06%2F)">数据集在此下载</a></p>
+<p><a href="https://plg.uwaterloo.ca/cgi-bin/cgiwrap/gvcormac/foo06" target="_blank" rel="noopener">数据集在此下载</a></p>
 <p>默认通过词集模型来进行表示。</p>
 <p>词集模式：输入邮件的分词与词汇表对照,出现的标为1</p>
 <p>词袋模式：输入邮件的分词与词汇表对照,出现的标为出现次数</p>
 <p>对应函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setOfWords2Vec</span><span class="params">(vocabList, inputSet)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    词集模型</span></span><br><span class="line"><span class="string">    输入邮件的分词与词汇表对照,出现的标为1</span></span><br><span class="line"><span class="string">    :param vocabList: 词汇表</span></span><br><span class="line"><span class="string">    :param inputSet: 某个文档</span></span><br><span class="line"><span class="string">    :return: returnVec: 文档向量，向量的每一元素为1或0</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    returnVec = [<span class="number">0</span>] * len(vocabList)</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputSet:</span><br><span class="line">        returnVec[vocabList.index(word)] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'词: &#123;word&#125; 不在字典中'</span>.format(word=word))</span><br><span class="line">    <span class="keyword">return</span> returnVec</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setOfWords2Vec</span><span class="hljs-params">(vocabList, inputSet)</span>:</span>
+    <span class="hljs-string">'''</span>
+<span class="hljs-string">    词集模型</span>
+<span class="hljs-string">    输入邮件的分词与词汇表对照,出现的标为1</span>
+<span class="hljs-string">    :param vocabList: 词汇表</span>
+<span class="hljs-string">    :param inputSet: 某个文档</span>
+<span class="hljs-string">    :return: returnVec: 文档向量，向量的每一元素为1或0</span>
+<span class="hljs-string">    '''</span>
+    returnVec = [<span class="hljs-number">0</span>] * len(vocabList)
+    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> inputSet:
+        returnVec[vocabList.index(word)] = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">else</span>:
+        print(<span class="hljs-string">'词: &#123;word&#125; 不在字典中'</span>.format(word=word))
+    <span class="hljs-keyword">return</span> returnVec</code></pre>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagOfWords2VecMN</span><span class="params">(vocabList, inputSet)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    词袋模型</span></span><br><span class="line"><span class="string">    输入邮件的分词与词汇表对照,出现的标为出现次数</span></span><br><span class="line"><span class="string">    :param vocabList: 词汇表</span></span><br><span class="line"><span class="string">    :param inputSet: 某个文档</span></span><br><span class="line"><span class="string">    :return: returnVec: 文档向量</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    returnVec = [<span class="number">0</span>] * len(vocabList)</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputSet:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> vocabList:</span><br><span class="line">            returnVec[vocabList.index(word)] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> returnVec</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bagOfWords2VecMN</span><span class="hljs-params">(vocabList, inputSet)</span>:</span>
+    <span class="hljs-string">'''</span>
+<span class="hljs-string">    词袋模型</span>
+<span class="hljs-string">    输入邮件的分词与词汇表对照,出现的标为出现次数</span>
+<span class="hljs-string">    :param vocabList: 词汇表</span>
+<span class="hljs-string">    :param inputSet: 某个文档</span>
+<span class="hljs-string">    :return: returnVec: 文档向量</span>
+<span class="hljs-string">    '''</span>
+    returnVec = [<span class="hljs-number">0</span>] * len(vocabList)
+    <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> inputSet:
+        <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> vocabList:
+            returnVec[vocabList.index(word)] += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> returnVec</code></pre>
 
 <h2 id="1-数据集处理"><a href="#1-数据集处理" class="headerlink" title="1.数据集处理"></a><strong>1.数据集处理</strong></h2><p>数据集中对data中的数据进行训练，而其训练参考结果在full中，full以例如<u>spam   path</u>的方式表示。</p>
 <p>在get_index()函数中读取full中文件，代码如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index = pd.read_csv(<span class="string">'./email/full/index'</span>, sep=<span class="string">' '</span>, header=<span class="literal">None</span>, names=[<span class="string">'type'</span>, <span class="string">'path'</span>], skiprows=skiprows, nrows=nrows)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python">index = pd.read_csv(<span class="hljs-string">'./email/full/index'</span>, sep=<span class="hljs-string">' '</span>, header=<span class="hljs-literal">None</span>, names=[<span class="hljs-string">'type'</span>, <span class="hljs-string">'path'</span>], skiprows=skiprows, nrows=nrows)</code></pre>
 
 <p>参数skiprows指跳过几行开始读取，nrows指从该行开始读取几行，sep指读取中的分隔符，index文件中没有列标，所以给了个type，path的列标。</p>
 <p>然后通过type和path组合，通过get_emailframe()函数获取相应path中的数据</p>
@@ -204,7 +229,9 @@
 <p>2.创建字典，通过set()函数与并集来实现。</p>
 <p>3.训练数据，得到词集</p>
 <p>4.得到贝叶斯概率，假如邮件中有词集里没有的单词，就使用平滑处理</p>
-<h2 id="3-测试与结果分析"><a href="#3-测试与结果分析" class="headerlink" title="3.测试与结果分析"></a>3.测试与结果分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">accuracy = (TP + TN )/( TP + FP + TN + FN)</span><br><span class="line">precision = TP / (TP + FP)</span><br><span class="line">recall = TP / (TP + FN)</span><br></pre></td></tr></table></figure>
+<h2 id="3-测试与结果分析"><a href="#3-测试与结果分析" class="headerlink" title="3.测试与结果分析"></a>3.测试与结果分析</h2><pre><code class="hljs python">accuracy = (TP + TN )/( TP + FP + TN + FN)
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)</code></pre>
 
 <p>得到准确率、精确率和召回率。</p>
 <p>个人理解：</p>

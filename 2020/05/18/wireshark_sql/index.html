@@ -198,7 +198,8 @@
 <p>发现第一个报文的request url:</p>
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20length((select%20count(*)%20from%20information_schema.SCHEMATA))&gt;0</code></pre>
 
-<p>该语句意思是在记录所有数据库信息的数据库中查找数据库的数量，&gt;0表示只有1个，这里因为过滤了注入失败的报文，所以直接能判断，为严谨验证可以跟踪这个报文的上下报文，查看是否有&gt;1注入失败了。</p>
+<p>该语句意思是在记录所有数据库信息的数据库中查找数据库的数量，length（5）=1，这里只是为了测试是否有数据库存在。</p>
+<p>这里因为过滤了注入失败的报文，所以直接能判断，为严谨验证可以跟踪这个报文的上下报文，查看是否有&gt;1注入失败了。</p>
 <p>然后可以看到下面报文：</p>
 <pre><code class="hljs http">http://172.16.80.11/index.php?act=news&amp;id=1%20and%20ascii(substr(((select%20count(*)%20from%20information_schema.SCHEMATA)),%201,%201))&gt;52</code></pre>
 

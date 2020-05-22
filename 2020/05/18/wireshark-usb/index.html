@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    922 字
+                    921 字
                   </span>
                 
 
@@ -192,8 +192,7 @@
 <p>UART，即通用异步接收／发送器。这类设备只能够利用USB来进行数据的接收和发送操作。实际上，这类设备与普通的通信设备并没有本质上的区别。</p>
 <p>HID，即人机交互设备。这也是USB作为接口来使用的一种典型应用。这类设备包括键盘，鼠标，游戏控制器，以及很多简单的显示设备等等。</p>
 <p>最后就是USB存储设备，这也是最常见的一种USB使用形式。比如说外接硬盘，U盘和闪存驱动器等等，这些都属于USB存储设备这一类。</p>
-<h5 id="wireshark准备工作"><a href="#wireshark准备工作" class="headerlink" title="wireshark准备工作"></a>wireshark准备工作</h5><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200519150335090.png" srcset="/img/loading.gif" alt="image-20200519150335090"></p>
-<p>选择<strong>USBPcap1</strong>进行监听。</p>
+<h5 id="wireshark准备工作"><a href="#wireshark准备工作" class="headerlink" title="wireshark准备工作"></a>wireshark准备工作</h5><p>选择<strong>USBPcap1</strong>进行监听。</p>
 <p>导出<strong>exmaple.pcap</strong>包</p>
 <p>在<strong>wireshark</strong>目录下运行</p>
 <pre><code class="hljs shell">tshark -r example.pcap -T fields -e usb.capdata &gt; result.txt</code></pre>

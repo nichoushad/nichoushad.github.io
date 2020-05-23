@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    309 字
+                    319 字
                   </span>
                 
 
@@ -195,6 +195,8 @@
 <pre><code class="hljs properties"><span class="hljs-attr">dnf</span> <span class="hljs-string">install -y yum-utils \</span>
  <span class="hljs-meta">device-mapper-persistent-data</span> <span class="hljs-string">\</span>
  <span class="hljs-attr">lvm2</span></code></pre>
+
+<pre><code class="hljs routeros">apt-<span class="hljs-builtin-name">get</span> <span class="hljs-builtin-name">remove</span> docker docker-engine docker.io containerd runc</code></pre>
 
 <h1 id="三、如何添加必要的Docker存储库"><a href="#三、如何添加必要的Docker存储库" class="headerlink" title="三、如何添加必要的Docker存储库"></a>三、如何添加必要的Docker存储库</h1><p>我们将使用dnf config-manager实用程序添加Docker存储库。<br>注意：一定要用阿里yum源，官方yum源会报错且下载速度慢</p>
 <pre><code class="hljs vim">dnf config-manager --<span class="hljs-built_in">add</span>-repo=http<span class="hljs-variable">s:</span>//mirrors.aliyun.<span class="hljs-keyword">com</span>/docker-<span class="hljs-keyword">ce</span>/linux/centos/docker-<span class="hljs-keyword">ce</span>.repo</code></pre>

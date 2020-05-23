@@ -194,15 +194,14 @@
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522135019.png" srcset="/img/loading.gif" alt=""></p>
 <p>因此我们可以推测Ann是使用AIM通信软件，那么可以通过wireshark对数据包进行解码，选中23数据包右键选择解码为，如下所示</p>
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522135418.png" srcset="/img/loading.gif" alt=""></p>
-<p>23应该是Ann登录AIM通信软件时发送的第一个AIM协议的数据包，第二个AIM协议数据包使用了AIM Messaging协议封装，那么直接从25数据包开始分析。</p>
+<h1 id="AIM协议分析"><a href="#AIM协议分析" class="headerlink" title="AIM协议分析"></a>AIM协议分析</h1><p>23应该是Ann登录AIM通信软件时发送的第一个AIM协议的数据包，第二个AIM协议数据包使用了AIM Messaging协议封装，那么直接从25数据包开始分析。</p>
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522141917.png" srcset="/img/loading.gif" alt=""></p>
 <p>在分析之前，我们回到题目中的第一个问题：What is the name of Ann’s IM buddy ?（翻译过来大概就是：跟Ann通信的好友IM buddy名字是什么） ， 从AIM Messaging协议来看，跟Ann通信的对方的IM Buddy Name是Sec558user1。 在ValueMessage中就是Ann给对方发送的第一条IM消息。</p>
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522142318.png" srcset="/img/loading.gif" alt=""></p>
 <p>在message中可以发现ann发送了一份邮件传送给对方。</p>
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522142624.png" srcset="/img/loading.gif" alt=""></p>
 <p>文件名字为recipe.docx</p>
-<p>使用WinHex工具打开recipe.bin文件，并删除选中的部分，然后把文件另存为recipe.docx文件，如下所示：</p>
-<p><img src="https://www.pianshen.com/images/32/db23e5a96b1e27c7e2d5b598c84fddf8.png" srcset="/img/loading.gif" alt="img"></p>
+<p>使用WinHex工具打开recipe.bin文件，并删除选中的部分，然后把文件另存为recipe.docx文件</p>
 <p>找到并打开recipe.docx文件，查看文件内容：</p>
 <p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/img/20200522143119.png" srcset="/img/loading.gif" alt=""></p>
 <p>结束。</p>
@@ -228,6 +227,12 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/05/22/docker-use/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker_use</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">

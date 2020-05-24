@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>EDR - zhazhafeng</title>
+  <title>apt - zhazhafeng</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -132,8 +132,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-22 18:32">
-                    2020年5月22日 晚上
+                  <time datetime="2020-05-24 18:20">
+                    2020年5月24日 晚上
                   </time>
                 </div>
               
@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    5 字
+                    533 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    1
+                    5
                      分钟
                   </span>
                 
@@ -182,7 +182,54 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="EDR产品介绍"><a href="#EDR产品介绍" class="headerlink" title="EDR产品介绍"></a>EDR产品介绍</h1>
+              <p>文章地址：<a href="https://nichoushad.github.io/2020/05/24/apt" target="_blank" rel="noopener">https://nichoushad.github.io/2020/05/24/apt</a></p>
+<p>分配到的平台的ip为10.20.181.49</p>
+<h1 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h1><p>1.后台包回放产生风险数据，查看APT平台是否能观测到威胁。</p>
+<p>2.能够过滤各种信息找出指定的攻击行为进行分析</p>
+<p>3.上传文件，查看APT平台对该文件的分析。</p>
+<p>4.能够将风险导出为excel表进行分析</p>
+<h1 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h1><h2 id="回放风险数据"><a href="#回放风险数据" class="headerlink" title="回放风险数据"></a>回放风险数据</h2><h3 id="暴力破解类"><a href="#暴力破解类" class="headerlink" title="暴力破解类"></a>暴力破解类</h3><p>此处通过scp上传数据包到后台的截图丢了。</p>
+<p>贴代码来代替：</p>
+<pre><code class="hljs powershell">scp ./bp.pcap ./ftp_force.pcap root@<span class="hljs-number">10.20</span>.<span class="hljs-number">181.49</span>:/home/pcap</code></pre>
+<p>随后通过ssh连接上服务器后，执行下图命令回放攻击：</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524201358.png" srcset="/img/loading.gif" alt=""></p>
+<p>此处攻击回放比较慢，因此并没有全部回放，ctrl +c退出了</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/2.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524202225.png" srcset="/img/loading.gif" alt=""></p>
+<p>可以看到此处流量统计，由于攻击产生了流量的一次峰值</p>
+<h3 id="DOS攻击"><a href="#DOS攻击" class="headerlink" title="DOS攻击"></a>DOS攻击</h3><p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/111.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524202349.png" srcset="/img/loading.gif" alt=""></p>
+<p>服务器中貌似没有威胁信息产生。。可能DOS数据包不够，要多次攻击。由于事件问题，并未测试。</p>
+<h3 id="挖矿攻击"><a href="#挖矿攻击" class="headerlink" title="挖矿攻击"></a>挖矿攻击</h3><p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524203405.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/1.png" srcset="/img/loading.gif" alt=""></p>
+<p>可以看到风险的产生，只不过风险级别为低。</p>
+<h3 id="DNS隐蔽信道攻击"><a href="#DNS隐蔽信道攻击" class="headerlink" title="DNS隐蔽信道攻击"></a>DNS隐蔽信道攻击</h3><p>powershell上传命令:</p>
+<pre><code class="hljs powershell">scp ./dnsyinbi.pcap root@<span class="hljs-number">10.20</span>.<span class="hljs-number">181.49</span>:/home/pcap</code></pre>
+
+
+
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524203104.png" srcset="/img/loading.gif" alt=""></p>
+<p>可以看到主页面的DNS流量暴涨，说明数据包成功发送。</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524203219.png" srcset="/img/loading.gif" alt=""></p>
+<p>等待好一会儿才刷新了风险，这次风险级别为高。</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/3333.png" srcset="/img/loading.gif" alt=""></p>
+<h3 id="sql注入攻击"><a href="#sql注入攻击" class="headerlink" title="sql注入攻击"></a>sql注入攻击</h3><p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/sql_0.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/sql_1.png" srcset="/img/loading.gif" alt=""></p>
+<p>查询后发现一堆攻击。GET报文中也有明显的sql注入行为。</p>
+<h2 id="攻击行为分析"><a href="#攻击行为分析" class="headerlink" title="攻击行为分析"></a>攻击行为分析</h2><p>查询疑似失陷事件类型结果</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524203839.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524204144.png" srcset="/img/loading.gif" alt=""></p>
+<p>这里显示了挖矿软件的恶意文件攻击</p>
+<p>查询web攻击</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/20200524204356.png" srcset="/img/loading.gif" alt=""></p>
+<p>发现sql注入攻击</p>
+<h2 id="文件上传检测"><a href="#文件上传检测" class="headerlink" title="文件上传检测"></a>文件上传检测</h2><p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/wenjian.png" srcset="/img/loading.gif" alt=""></p>
+<h2 id="导出文件分析"><a href="#导出文件分析" class="headerlink" title="导出文件分析"></a>导出文件分析</h2><p>导出威胁</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/weixie1.png" srcset="/img/loading.gif" alt=""></p>
+<p>筛选中低风险</p>
+<p><img src="https://raw.githubusercontent.com/nichoushad/pic_for_md/master/weixie2.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h1><p>通过本次实验，学习了<strong>明御APT攻击预警平台</strong>的功能和对它导出内容的基本的分析，让我意识到这个产品的优秀之处。其中主页面挺酷炫，希望改天能在自己的服务器上实现一些类似的访问浏览功能。</p>
+
             </article>
             <hr>
             <div>
@@ -205,18 +252,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/23/%E7%8E%84%E6%AD%A6%E7%9B%BE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">玄武盾</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/22/docker-use/">
-                        <span class="hidden-mobile">docker_use</span>
+                      <a href="/2020/05/23/%E6%9C%A8%E9%A9%AC%E5%8F%96%E8%AF%81/">
+                        <span class="hidden-mobile">木马取证</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -356,7 +397,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "EDR&nbsp;",
+        "apt&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

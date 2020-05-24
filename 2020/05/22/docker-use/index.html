@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.5k 字
+                    1.7k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    18
+                    21
                      分钟
                   </span>
                 
@@ -323,6 +323,23 @@ COPY [--chown=<span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;
 <p><strong>导入容器快照</strong></p>
 <p>可以使用 docker import 从容器快照文件中再导入为镜像，以下实例将快照文件 ubuntu.tar 导入到镜像 test/ubuntu:v1:</p>
 <pre><code class="hljs elixir"><span class="hljs-variable">$ </span>cat docker/ubuntu.tar | docker <span class="hljs-keyword">import</span> - test/<span class="hljs-symbol">ubuntu:</span>v1</code></pre>
+
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><pre><code class="hljs bash">docker build -t friendlyname .<span class="hljs-comment"># 使用此目录的 Dockerfile 创建镜像</span>
+docker run -p 4000:80 friendlyname  <span class="hljs-comment"># 运行端口 4000 到 90 的“友好名称”映射</span>
+docker run -d -p 4000:80 friendlyname         <span class="hljs-comment"># 内容相同，但在分离模式下</span>
+docker ps                                 <span class="hljs-comment"># 查看所有正在运行的容器的列表</span>
+docker stop &lt;<span class="hljs-built_in">hash</span>&gt;                     <span class="hljs-comment"># 平稳地停止指定的容器</span>
+docker ps -a           <span class="hljs-comment"># 查看所有容器的列表，甚至包含未运行的容器</span>
+docker <span class="hljs-built_in">kill</span> &lt;<span class="hljs-built_in">hash</span>&gt;                   <span class="hljs-comment"># 强制关闭指定的容器</span>
+docker rm &lt;<span class="hljs-built_in">hash</span>&gt;              <span class="hljs-comment"># 从此机器中删除指定的容器</span>
+docker rm $(docker ps -a -q)           <span class="hljs-comment"># 从此机器中删除所有容器</span>
+docker images -a                               <span class="hljs-comment"># 显示此机器上的所有镜像</span>
+docker rmi &lt;imagename&gt;            <span class="hljs-comment"># 从此机器中删除指定的镜像</span>
+docker rmi $(docker images -q)             <span class="hljs-comment"># 从此机器中删除所有镜像</span>
+docker login             <span class="hljs-comment"># 使用您的 Docker 凭证登录此 CLI 会话</span>
+docker tag &lt;image&gt; username/repository:tag  <span class="hljs-comment"># 标记 &lt;image&gt; 以上传到镜像库</span>
+docker push username/repository:tag            <span class="hljs-comment"># 将已标记的镜像上传到镜像库</span>
+docker run username/repository:tag                   <span class="hljs-comment"># 运行镜像库中的镜像</span></code></pre>
             </article>
             <hr>
             <div>

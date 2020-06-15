@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - zhazhafeng</title>
+  <title>zhazhafeng</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -46,7 +46,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -132,6 +132,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -141,85 +145,214 @@
     
       <div class="container nopadding-md">
         <div class="py-5" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 25 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/05/23/%E6%9C%A8%E9%A9%AC%E5%8F%96%E8%AF%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">木马取证</span>
-      <span style="float: right;">05-23</span>
-    </a>
-  
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/18/wireshark-usb/">wireshark_usb</a>
+
+      <a href="/2020/05/18/wireshark-usb/" class="index-excerpt">
+        
+        
+          
+        
+        <div>实验内容利用wireshark还能实现哪些取证,要求自己设计一试验场景,并进行验证。
+Usb传输取证（进行此取证必须要下载wireshark中的USBPcap插件）
+实验过程Usb传输取证介绍在我们开始操作之前，我觉得还是得给大家介绍一些有关USB设备的基础知识。USB有其自己的标准和规范。基本而言，我们可以通过以下三种方式来使用USB：
+USB UART接口
+USB HID（交互设备）
+USB存</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wireshark/">wireshark</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-    <a href="/2020/05/23/%E7%8E%84%E6%AD%A6%E7%9B%BE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">玄武盾</span>
-      <span style="float: right;">05-23</span>
-    </a>
-  
     
-    <a href="/2020/05/22/EDR/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">EDR</span>
-      <span style="float: right;">05-22</span>
-    </a>
-  
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/18/wireshark-file-upload/">wireshark_file_upload</a>
+
+      <a href="/2020/05/18/wireshark-file-upload/" class="index-excerpt">
+        
+        
+          
+        
+        <div>实验目的利用wireshark分析文件上传入侵,实现攻击者IP溯源和攻击证据链提供。
+实验过程过滤出可能存在攻击的数据包：
+http matches "upload|alert|script|eval|select"
+
+
+发现小马
+对数据包base64解码后得到：
+@ini_set("display_errors","0");
+@set_time_limit(0);
+@set_magic_quot</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wireshark/">wireshark</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-    <a href="/2020/05/22/docker-use/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">docker_use</span>
-      <span style="float: right;">05-22</span>
-    </a>
-  
     
-    <a href="/2020/05/22/wireshark-ann/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">wireshark_网络取证_其它</span>
-      <span style="float: right;">05-22</span>
-    </a>
-  
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/18/wireshark_sql/">wireshark分析sql注入流量</a>
+
+      <a href="/2020/05/18/wireshark_sql/" class="index-excerpt">
+        
+        
+          
+        
+        <div>实验要求利用wireshark分析sql注入攻击,要求通过分析协议包文件,实现攻击者IP溯源和攻击证据链提供。
+资源下载：百度云提取码：tccz
+操作步骤
+观察报文规律猜测得到当sql注入成功时，返回的报文中会有
+&lt;div class="span7 text-center"&gt;
+&lt;h1&gt;This's Title!&lt;/h1&gt;&lt;br&gt;&lt;p class</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wireshark/">wireshark</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-    <a href="/2020/05/21/docker%E5%AE%89%E8%A3%85/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">docker安装</span>
-      <span style="float: right;">05-21</span>
-    </a>
-  
     
-    <a href="/2020/05/21/yum/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">yum</span>
-      <span style="float: right;">05-21</span>
-    </a>
-  
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/13/csrf/">记一次csrf实验</a>
+
+      <a href="/2020/05/13/csrf/" class="index-excerpt">
+        
+        
+          
+        
+        <div></div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-13
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web%E5%AE%89%E5%85%A8/">web安全</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
     
-    <a href="/2020/05/20/tmux/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">tmux速查表</span>
-      <span style="float: right;">05-20</span>
-    </a>
-  
     
-    <a href="/2020/05/20/git/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">git连接远程仓库</span>
-      <span style="float: right;">05-20</span>
-    </a>
-  
-    
-    <a href="/2020/05/20/pandas/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">pandas的基本使用</span>
-      <span style="float: right;">05-20</span>
-    </a>
-  
-</div>
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/10/10/bayesian/">python贝叶斯实现垃圾邮件分类</a>
+
+      <a href="/2019/10/10/bayesian/" class="index-excerpt">
+        
+        
+          
+        
+        <div>bayesian原理：github贝叶斯原理
+机器学习实战
+数据集在此下载
+贝叶斯处理垃圾邮件/可选择词 袋、词集模式
+默认通过词集模型来进行表示。
+词集模式：输入邮件的分词与词汇表对照,出现的标为1
+词袋模式：输入邮件的分词与词汇表对照,出现的标为出现次数
+对应函数
+def setOfWords2Vec(vocabList, inputSet):
+    '''
+    词集模型
+    输入邮</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-10-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </span>
   </nav>
   
@@ -318,7 +451,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档页&nbsp;",
+        "for myself&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

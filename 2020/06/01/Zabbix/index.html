@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/botanical.png">
+  <link rel="icon" type="image/png" href="/img/botanical.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Zabbix - zhazhafeng</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>zhazhafeng's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/xue.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-06-01 08:50">
+                    2020年6月1日 早上
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.3k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    18
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Zabbix-server"><a href="#Zabbix-server" class="headerlink" title="Zabbix server"></a>Zabbix server</h1><p>基本的Zabbix服务器起作用分三个不同的组件;他们是:Zabbix服务器，Web前端和数据库存储。</p>
+<p>Zabbix的所有配置信息都存储在服务器和Web前端进行交互的数据库中。Zabbix的所有配置信息都存储在服务器和Web前端进行交互的数据库中。例如，当你通过Web前端（或者API）新增一个条目时，它会被添加到数据库的item表里。然后，Zabbix服务器以每分钟一次的频率查询item表中的活动列表，接着将它存储在Zabbix服务器中的缓存里。这就是为什么Zabbix前端所做的任何更改最多需要花费两分钟才能显示在最新的数据段的原因。</p>
+<h2 id="zabbix-server"><a href="#zabbix-server" class="headerlink" title="zabbix server"></a>zabbix server</h2><h4 id="Server-process"><a href="#Server-process" class="headerlink" title="Server process"></a>Server process</h4><h5 id="If-installed-as-package"><a href="#If-installed-as-package" class="headerlink" title="If installed as package"></a>If installed as package</h5><p>Zabbix server作为守护线程启动，可以通过以下命令打开</p>
+<pre><code class="hljs routeros">shell&gt;<span class="hljs-built_in"> service </span>zabbix-server start</code></pre>
+
+<p>无法运行的系统上执行该条命令</p>
+<pre><code class="hljs dockerfile"><span class="hljs-keyword">shell</span><span class="bash">&gt; /etc/init.d/zabbix-server start</span></code></pre>
+
+<p>相似的，停止命令</p>
+<pre><code class="hljs routeros">shell&gt;<span class="hljs-built_in"> service </span>zabbix-server stop
+shell&gt;<span class="hljs-built_in"> service </span>zabbix-server restart
+shell&gt;<span class="hljs-built_in"> service </span>zabbix-server status</code></pre>
+
+<p>你可以使用Zabbix server下的命令行参数：</p>
+<pre><code class="hljs vim">-<span class="hljs-keyword">c</span> --config <span class="hljs-symbol">&lt;file&gt;</span>        配置文件的绝对路径 (默认路径： /etc/zabbix/zabbix_server.<span class="hljs-keyword">conf</span>)
+-R --<span class="hljs-keyword">runtime</span>-control &lt;选项&gt;     执行管理能力
+-h --<span class="hljs-keyword">help</span>                       帮助提示
+-V --<span class="hljs-keyword">version</span>                    显示版本号</code></pre>
+
+<h3 id="runtime-control"><a href="#runtime-control" class="headerlink" title="runtime control"></a>runtime control</h3><p>选项:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+<th align="left">Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">config_cache_reload</td>
+<td align="left">重新加载配置缓存. 忽略当前已加载的缓存.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">housekeeper_execute</td>
+<td align="left">启动管家程序. 忽略当前正在进行中的管家程序.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">log_level_increase[=&lt;<strong>目标</strong>&gt;]</td>
+<td align="left">增加日志的级别，如果没有指定目标则影响所有的进程.</td>
+<td align="left"><strong>pid</strong> - 进程标识 (1 ~ 65535) <strong>进程类型</strong> - 指定进程的所有类型 (例如, poller) <strong>进程类型,N</strong> - 进程类型和编号 (例如, poller,3)</td>
+</tr>
+<tr>
+<td align="left">log_level_decrease[=&lt;<strong>目标</strong>&gt;]</td>
+<td align="left">降低日志的基本，如果没有指定目标则影响所有的进程.</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>单一zabbix进程的日志基本改变后,进程的PIDs的值也会改变,允许的范围为1~65535.对大用户&lt;进程类型，N＞目标选项可更改单个进程的日志级别</p>
+<h2 id="Zabbix-agent"><a href="#Zabbix-agent" class="headerlink" title="Zabbix agent"></a>Zabbix agent</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>Parameter</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>UNIX and Windows agent</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">-c –config <config-file></td>
+<td align="left">Path to the configuration file. You may use this option to specify a configuration file that is not the default one. On UNIX, default is /usr/local/etc/zabbix_agentd.conf or as set by <a href="https://www.zabbix.com/documentation/4.2/manual/installation/install#installing_zabbix_daemons" target="_blank" rel="noopener">compile-time</a> variables <em>–sysconfdir</em> or <em>–prefix</em> On Windows, default is c:\zabbix_agentd.conf</td>
+</tr>
+<tr>
+<td align="center">-p –print</td>
+<td align="left">Print known items and exit. <em>Note</em>: To return <a href="https://www.zabbix.com/documentation/4.2/manual/config/items/userparameters" target="_blank" rel="noopener">user parameter</a> results as well, you must specify the configuration file (if it is not in the default location).</td>
+</tr>
+<tr>
+<td align="center">-t –test <item key></td>
+<td align="left">Test specified item and exit. <em>Note</em>: To return <a href="https://www.zabbix.com/documentation/4.2/manual/config/items/userparameters" target="_blank" rel="noopener">user parameter</a> results as well, you must specify the configuration file (if it is not in the default location).</td>
+</tr>
+<tr>
+<td align="center">-h –help</td>
+<td align="left">Display help information</td>
+</tr>
+<tr>
+<td align="center">-V –version</td>
+<td align="left">Display version number</td>
+</tr>
+<tr>
+<td align="center"><strong>UNIX agent only</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">-R –runtime-control <option></td>
+<td align="left">Perform administrative functions. See <a href="https://www.zabbix.com/documentation/4.2/manual/concepts/agent#runtime_control" target="_blank" rel="noopener">runtime control</a>.</td>
+</tr>
+<tr>
+<td align="center"><strong>Windows agent only</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">-m –multiple-agents</td>
+<td align="left">Use multiple agent instances (with -i,-d,-s,-x functions). To distinguish service names of instances, each service name will include the Hostname value from the specified configuration file.</td>
+</tr>
+<tr>
+<td align="center"><strong>Windows agent only (functions)</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">-i –install</td>
+<td align="left">Install Zabbix Windows agent as service</td>
+</tr>
+<tr>
+<td align="center">-d –uninstall</td>
+<td align="left">Uninstall Zabbix Windows agent service</td>
+</tr>
+<tr>
+<td align="center">-s –start</td>
+<td align="left">Start Zabbix Windows agent service</td>
+</tr>
+<tr>
+<td align="center">-x –stop</td>
+<td align="left">Stop Zabbix Windows agent service</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>显示所有内置监控项和它们的值</p>
+</li>
+<li><p>使用指定的配置文件中定义的“mysql.ping”键来测试用户参数</p>
+</li>
+<li><p>在Windows下使用默认路径下的配置文件c:\zabbix_agentd.conf安装一项 Zabbix agent服务</p>
+</li>
+<li><p>使用位于与agent可执行文件同一文件夹中的配置文件zabbix_agentd.conf为Windows安装“Zabbix Agent [Hostname]”服务，并通过从配置文件中的唯一Hostname值扩来为命名。</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd --<span class="hljs-built_in">print</span></span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd -t <span class="hljs-string">"mysql.ping"</span> -c /etc/zabbix/zabbix_agentd.conf</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd.exe -i</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd.exe -i -m -c zabbix_agentd.conf</span></code></pre>
+
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd -R log_level_increase</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd -R log_level_increase=listener,3</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd -R log_level_increase=1234</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_agentd -R log_level_decrease=<span class="hljs-string">"active checks"</span></span></code></pre>
+
+
+
+</li>
+</ul>
+<h2 id="Zabbix-proxy"><a href="#Zabbix-proxy" class="headerlink" title="Zabbix-proxy"></a>Zabbix-proxy</h2><p>同理启动</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> service zabbix-proxy start</span></code></pre>
+
+<p>或者是</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> /etc/init.d/zabbix-proxy start</span></code></pre>
+
+<p>常用以下命令</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> service zabbix-proxy stop</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> service zabbix-proxy restart</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> service zabbix-proxy status</span></code></pre>
+
+<pre><code class="hljs vim">-<span class="hljs-keyword">c</span> --config <span class="hljs-symbol">&lt;file&gt;</span>              path <span class="hljs-keyword">to</span> the configuration <span class="hljs-keyword">file</span>
+-R --<span class="hljs-keyword">runtime</span>-control <span class="hljs-symbol">&lt;option&gt;</span>   perform administrative functions
+-h --<span class="hljs-keyword">help</span>                       give this <span class="hljs-keyword">help</span>
+-V --<span class="hljs-keyword">version</span>                    <span class="hljs-keyword">display</span> <span class="hljs-keyword">version</span> <span class="hljs-keyword">number</span></code></pre>
+
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_proxy -c /usr/<span class="hljs-built_in">local</span>/etc/zabbix_proxy.conf</span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_proxy --<span class="hljs-built_in">help</span></span>
+<span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_proxy -V</span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">描述</th>
+<th align="left">目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">config_cache_reload</td>
+<td align="left">重新加载配置缓存。若当前已被加载，则忽略。 激活Zabbix proxy将会连接到Zabbix server并查询配置数据。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">housekeeper_execute</td>
+<td align="left">开始管理程序。 如果管理程序目前正在进行中，则被忽略.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">log_level_increase[=&lt;<strong>target</strong>&gt;]</td>
+<td align="left">提升日志级别。 如果没有特别指出，将会赋给所有进程。</td>
+<td align="left"><strong>pid</strong> - 进程号 (1 到 65535) <strong>process type</strong> -All 特指类型的进程(例如 poller) <strong>process type,N</strong> - 进程类型和号码 (例如, poller,3)</td>
+</tr>
+</tbody></table>
+<p>同时还有降低日志级别，log_levell_decrease</p>
+<p>Example of using runtime control to reload the proxy configuration cache:</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_proxy -c /usr/<span class="hljs-built_in">local</span>/etc/zabbix_proxy.conf -R config_cache_reload</span></code></pre>
+
+<p>Example of using runtime control to trigger execution of housekeeper</p>
+<pre><code class="hljs shell"><span class="hljs-meta">shell&gt;</span><span class="bash"> zabbix_proxy -c /usr/<span class="hljs-built_in">local</span>/etc/zabbix_proxy.conf -R housekeeper_execute</span></code></pre>
+
+<p>进程用户</p>
+<p>Zabbix proxy是设计在非root账户下的。它会以其他任何非root用户启动的进程一样的方式运行。 所以，您可以使用任意非root用户运行agent，且不会产生任何问题。</p>
+<p>如果您在’root’账户下运行，它将切换到硬编码的“zabbix”用户，该用户必须存在于您的系统上。如果您只想以’root’方式运行proxy，您必须在proxy配额文件里修改‘AllowRoot‘参数。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">随意开火</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/05/HW-DB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HW_DB</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/31/%E6%89%8B%E6%9C%BA%E5%8F%96%E8%AF%81/">
+                        <span class="hidden-mobile">手机取证</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://github.com/nichoushad" target="_blank" rel="nofollow noopener"><span>github</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="http://www.hdu.edu.cn/" target="_blank" rel="nofollow noopener">
+        <span>hdu</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Zabbix&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

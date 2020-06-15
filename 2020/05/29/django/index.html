@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/botanical.png">
+  <link rel="icon" type="image/png" href="/img/botanical.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>django - zhazhafeng</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>zhazhafeng's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/xue.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-29 15:32">
+                    2020年5月29日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.5k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    19
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="模型（Models）相关知识点"><a href="#模型（Models）相关知识点" class="headerlink" title="模型（Models）相关知识点"></a>模型（Models）相关知识点</h2><p><strong>字段类型：</strong></p>
+<p>在权限认证模型中使用到的字段类型如下：</p>
+<pre><code class="hljs text">CharField: 用来存储字符串，必须制定一个参数 max_length用来限定字段最大长度
+Foreignkey： 是一个关联字段，创建多表之间的多对一关系，如果创建同表之间的递归关联关系，可以使用models.ForeignKey(&#39;self&#39;)
+ManyToManyField: 用来实现多对多的关联关系
+DateField： 日期时间字段
+EmailField： email字段，用来检查email地址是否合法
+ImageField： 图片字段，用来定义图片上传和图片检查，需要安装pillow库</code></pre>
+
+<p><strong>字段选项：</strong></p>
+<pre><code class="hljs text">unique: 设置为True, 则表示这个字段必须有唯一值，这是从数据库级别来强制数据唯一，后面我们还会介绍通过form验证来确保数据输入的唯一
+verbose_name:
+blank: 默认值是False, 设置为True，则该字段允许为空
+null: 默认值是False，如果为True，Django会在数据库中将空值转存为NULL
+choices: 是一个可迭代结构（元祖），每个元组中的第一个元素，是存储在数据库中的值；第二个元素是使人容易</code></pre>
+
+<p>on_delete :在django2.0版本以前，定关联字段时，on_delete选项并不是必须的，而在django2.0版本后，在定义关联字段时on_delete是必须要定义的，常用参数如下：</p>
+<pre><code class="hljs text">on_delete&#x3D;models.CASCADE,     # 删除关联数据,与之关联也删除
+on_delete&#x3D;models.DO_NOTHING,  # 删除关联数据,什么也不做
+on_delete&#x3D;models.PROTECT,     # 删除关联数据,引发错误ProtectedError
+on_delete&#x3D;models.SET_NULL,    # 删除关联数据,与之关联的值设置为null
+on_delete&#x3D;models.SET_DEFAULT, # 删除关联数据,与之关联的值设置为默认值</code></pre>
+
+<p>需要注意的是在使用SET_NULL的时候，该字段在模型定义的时候需要设置可为空，例如：</p>
+<pre><code class="hljs text">user &#x3D; models.ForeignKey(User, on_delete&#x3D;models.SET_NULL, blank&#x3D;True, null&#x3D;True)</code></pre>
+
+<p>同样在使用SET_DEFAULT的时候，需要预先定义default：</p>
+<pre><code class="hljs text">user &#x3D; models.ForeignKey(User, on_delete&#x3D;models.SET_DEFAULT, default&#x3D;&#39;默认值&#39;)</code></pre>
+
+<p>更多参考django官网。</p>
+<h1 id="Form表单"><a href="#Form表单" class="headerlink" title="Form表单"></a>Form表单</h1><p>Django使用会话和中间件来拦截认证系统中的请求对象。它们在每一个请求上提供一个request.user属性，表示当前的用户。如果当前的用户没有登入，该属性将设置成AnonymousUser的一个实例，否则将会是User实例。<br><strong>1、request.user.is_authenticated:</strong> 用来判断用户是否登入，如LoginView中：</p>
+<pre><code class="hljs text"># 当用户访问登陆页面时，判断用户如果未登入则访问登陆页面，如果登入则跳转到首页
+if not request.user.is_authenticated:
+    return render(request, &#39;system&#x2F;users&#x2F;login.html&#39;)
+else:
+    return HttpResponseRedirect(&#39;&#x2F;&#39;)</code></pre>
+
+<p><strong>2、is_valid():</strong> Form实例的一个方法，用来做字段验证，当输入字段值合法时，它将返回True，同时将表单的数据存放到cleaned_data属性中。<br><strong>3、authenticate(request=None, \</strong>credentials):** 用来认证用户，credentials为关键字参数，默认为username和password，如果通过认证后端检查，则返回一个User对象。<br><strong>4、login(request, user, backend=None):</strong> 用来从视图中登陆一个用户，同时将用户的ID保存在session表中。注意：在调用login()之前必须使用authenticate()成功认证这个用户。<br><strong>5、HttpResponseRedirect[source]:</strong> 用来重定向访问，参数是重定向的地址，可以是完整的URL，也可以相想读与项目的绝对路径。</p>
+<p><strong>1、logout(request):</strong> 登出用户。<br><strong>2、reverse(viewname):</strong> 根据url name来进行url的反向解析。</p>
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><pre><code class="hljs ini"><span class="hljs-attr">LOGIN_URL</span> = <span class="hljs-string">'/login/'</span></code></pre>
+
+<p>from djanco.contrib.auth.decorators import login_required<br>from django.shortcuts import render_to_response<br>from django.http import HttpResponse</p>
+<pre><code class="hljs ruby">@login_required
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myview</span><span class="hljs-params">(request)</span></span><span class="hljs-symbol">:</span>
+    <span class="hljs-keyword">return</span> render_to_response(<span class="hljs-string">'index.html'</span>)</code></pre>
+
+<p>如果用户还没有登录，默认会跳转到‘/accounts/login/’。这个值可以在settings文件中通过LOGIN_URL参数来设定。（后面还会自动加上你请求的url作为登录后跳转的地址，如： /accounts/login/?next=/polls/3/ 登录完成之后，会去请求/poll/3)</p>
+<p>CBV和FBV<br>我们之前写过的都是基于函数的view，就叫FBV。还可以把view写成基于类的:</p>
+<p>FBV版：</p>
+<h2 id="FBV版添加班级"><a href="#FBV版添加班级" class="headerlink" title="FBV版添加班级"></a>FBV版添加班级</h2><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_class</span><span class="hljs-params">(request)</span>:</span>
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">"POST"</span>:
+        class_name = request.POST.get(<span class="hljs-string">"class_name"</span>)
+        models.Classes.objects.create(name=class_name)
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">"/class_list/"</span>)
+    <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">"add_class.html"</span>)</code></pre>
+
+
+
+<p>CBV版：</p>
+<h2 id="CBV版添加班级"><a href="#CBV版添加班级" class="headerlink" title="CBV版添加班级"></a>CBV版添加班级</h2><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.views <span class="hljs-keyword">import</span> View
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddClass</span><span class="hljs-params">(View)</span>:</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self, request)</span>:</span>
+    <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">"add_class.html"</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span><span class="hljs-params">(self, request)</span>:</span>
+    class_name = request.POST.get(<span class="hljs-string">"class_name"</span>)
+    models.Classes.objects.create(name=class_name)
+    <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">"/class_list/"</span>)</code></pre>
+<p>使用CBV时，urls.py中也做对应的修改：</p>
+<h2 id="urls-py中"><a href="#urls-py中" class="headerlink" title="urls.py中"></a>urls.py中</h2><pre><code class="hljs python">url(<span class="hljs-string">r'^add_class/$'</span>, views.AddClass.as_view()),</code></pre>
+
+<p>给试图加装饰器<br>使用装饰器装饰FBV<br>FBV本身就是一个函数，所以和给普通的函数加装饰器无差：</p>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(func)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">(*args, **kwargs)</span>:</span>
+        start_time = time.time()
+        ret = func(*args, **kwargs)
+        end_time = time.time()
+        print(<span class="hljs-string">'used:'</span>, end_time-start_time)
+        <span class="hljs-keyword">return</span> ret
+    <span class="hljs-keyword">return</span> inner</code></pre>
+
+<h1 id="FBV版添加班级-1"><a href="#FBV版添加班级-1" class="headerlink" title="FBV版添加班级"></a>FBV版添加班级</h1><pre><code class="hljs python"><span class="hljs-meta">@wrapper</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_class</span><span class="hljs-params">(request)</span>:</span>
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">"POST"</span>:
+        class_name = request.POST.get(<span class="hljs-string">"class_name"</span>)
+        models.Classes.objects.create(name=class_name)
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">"/class_list/"</span>)
+    <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">"add_class.html"</span>)</code></pre>
+
+<p>使用装饰器装饰CBV<br>类中的方法与独立函数不完全相同，因此不能直接将函数装饰器应用于类中的方法 ，我们需要先将其转换为方法装饰器。</p>
+<p>Django中提供了method_decorator装饰器用于将函数装饰器转换为方法装饰器。</p>
+<h1 id="CBV版添加班级-1"><a href="#CBV版添加班级-1" class="headerlink" title="CBV版添加班级"></a>CBV版添加班级</h1><p>from django.views import View<br>from django.utils.decorators import method_decorator</p>
+<p>class AddClass(View):</p>
+<pre><code>@method_decorator(wrapper)
+def get(self, request):
+    return render(request, &quot;add_class.html&quot;)
+
+def post(self, request):
+    class_name = request.POST.get(&quot;class_name&quot;)
+    models.Classes.objects.create(name=class_name)
+    return redirect(&quot;/class_list/&quot;)</code></pre><p>使用CBV时要注意，请求过来后会先执行dispatch()这个方法，如果需要批量对具体的请求处理方法，如get，post等做一些操作的时候，这里我们可以手动改写dispatch方法，这个dispatch方法就和在FBV上加装饰器的效果一样。</p>
+<p>class Login(View):</p>
+<pre><code>def dispatch(self, request, *args, **kwargs):
+    print(&apos;before&apos;)
+    obj = super().dispatch(request, *args, **kwargs)
+    print(&apos;after&apos;)
+    return obj
+
+def get(self,request):
+    return render(request,&apos;login.html&apos;)
+
+def post(self,request):
+    print(request.POST.get(&apos;user&apos;))
+    return HttpResponse(&apos;Login.post&apos;)</code></pre>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/django/">django</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">随意开火</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/30/basic/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">basic_</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/25/redis/">
+                        <span class="hidden-mobile">redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://github.com/nichoushad" target="_blank" rel="nofollow noopener"><span>github</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="http://www.hdu.edu.cn/" target="_blank" rel="nofollow noopener">
+        <span>hdu</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "django&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

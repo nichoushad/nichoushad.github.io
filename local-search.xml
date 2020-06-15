@@ -4,25 +4,6 @@
   
   
   <entry>
-    <title>HW_DB</title>
-    <link href="/2020/06/05/HW-DB/"/>
-    <url>/2020/06/05/HW-DB/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一、-实验目标"><a href="#一、-实验目标" class="headerlink" title="一、   实验目标"></a>一、   实验目标</h2><p>完成本实验，您应该能够：</p><p>l 熟悉CentOS系统的后台包回放操作</p><p>l 熟悉产品界面的整体使用</p><p>l 熟悉风险事件的筛选和初步判断</p><h2 id="二、-测试环境"><a href="#二、-测试环境" class="headerlink" title="二、   测试环境"></a>二、   测试环境</h2><h4 id="2-1-测试准备"><a href="#2-1-测试准备" class="headerlink" title="2.1. 测试准备"></a>2.1. 测试准备</h4><h5 id="2-1-1设备准备"><a href="#2-1-1设备准备" class="headerlink" title="2.1.1设备准备"></a>2.1.1设备准备</h5><p>测试所需设备如下表：</p><table><thead><tr><th><strong>名称</strong></th><th><strong>数量</strong></th><th><strong>用途</strong></th><th><strong>备注</strong></th></tr></thead><tbody><tr><td><strong>明御数据库审计与风险控制系统</strong></td><td></td><td>用于后台包回放及页面操作显示。</td><td></td></tr><tr><td><strong>Xshell</strong></td><td></td><td>SSH连接数审设备后台。</td><td></td></tr></tbody></table><h5 id="2-1-2测试数据准备"><a href="#2-1-2测试数据准备" class="headerlink" title="2.1.2测试数据准备"></a>2.1.2测试数据准备</h5><table><thead><tr><th><strong>数据名称</strong></th><th><strong>数量</strong></th><th><strong>用途</strong></th></tr></thead><tbody><tr><td><strong>数据库访问数据包</strong></td><td></td><td>通过数据包播放器或本地包回放的形式，模拟实际网络环境中的数据库访问</td></tr></tbody></table><h2 id="实验流程"><a href="#实验流程" class="headerlink" title="实验流程"></a>实验流程</h2><h5 id="（1）后台包回放产生风险数据"><a href="#（1）后台包回放产生风险数据" class="headerlink" title="（1）后台包回放产生风险数据"></a>（1）后台包回放产生风险数据</h5><p>使用Xshell等工具连接数审产品后台SSH端口，并进行包回放</p><p>操作方法：</p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605190417392.png" srcset="/img/loading.gif" alt="image-20200605190417392"></p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605191458862.png" srcset="/img/loading.gif" alt="image-20200605191458862"></p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192210094.png" srcset="/img/loading.gif" alt="image-20200605192210094"></p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192145876.png" srcset="/img/loading.gif" alt="image-20200605192145876"></p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192349474.png" srcset="/img/loading.gif" alt="image-20200605192349474"></p><h5 id="（2）查看风险信息"><a href="#（2）查看风险信息" class="headerlink" title="（2）查看风险信息"></a>（2）查看风险信息</h5><p>在资产管理中，启用安全规则</p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192521964.png" srcset="/img/loading.gif" alt="image-20200605192521964"></p><p>在告警日志中</p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192714846.png" srcset="/img/loading.gif" alt="image-20200605192714846"></p><p>告警日志详细：</p><p><img src="C:%5CUsers%5C12273%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200605192749916.png" srcset="/img/loading.gif" alt="image-20200605192749916"></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>蓝队培训</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Zabbix</title>
     <link href="/2020/06/01/Zabbix/"/>
     <url>/2020/06/01/Zabbix/</url>
